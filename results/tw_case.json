@@ -1,0 +1,584 @@
+{
+ "mortality": {
+  "h_med": 83.6,
+  "w_med": 87.6,
+  "joint_med": 90.7,
+  "p_any95": 25.7
+ },
+ "TW|full|own|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1655.0,
+  "lifetime_p5": 828.0,
+  "bequest_med": 466.0
+ },
+ "TW|full|own|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1655.0,
+  "lifetime_p5": 828.0,
+  "bequest_med": 17136.0
+ },
+ "TW|full|own|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1826.0,
+  "lifetime_p5": 869.0,
+  "bequest_med": 16063.0
+ },
+ "TW|full|own|VPW": {
+  "ruin_alive_pct": 0.03,
+  "ruin_age_med": 100.9,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 2406.0,
+  "lifetime_p5": 1184.0,
+  "bequest_med": 9967.0
+ },
+ "TW|full|renter|DEPOSIT": {
+  "ruin_alive_pct": 17.59,
+  "ruin_age_med": 96.2,
+  "floor_breach_pct": 17.4,
+  "lifetime_med": 1931.0,
+  "lifetime_p5": 965.0,
+  "bequest_med": 189.0
+ },
+ "TW|full|renter|FIX": {
+  "ruin_alive_pct": 0.06,
+  "ruin_age_med": 91.0,
+  "floor_breach_pct": 0.06,
+  "lifetime_med": 1931.0,
+  "lifetime_p5": 965.0,
+  "bequest_med": 14297.0
+ },
+ "TW|full|renter|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 2158.0,
+  "lifetime_p5": 1021.0,
+  "bequest_med": 12955.0
+ },
+ "TW|full|renter|VPW": {
+  "ruin_alive_pct": 0.47,
+  "ruin_age_med": 100.8,
+  "floor_breach_pct": 0.49,
+  "lifetime_med": 2801.0,
+  "lifetime_p5": 1292.0,
+  "bequest_med": 7320.0
+ },
+ "TW|full|mortgage|DEPOSIT": {
+  "ruin_alive_pct": 0.46,
+  "ruin_age_med": 104.2,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1831.0,
+  "lifetime_p5": 989.0,
+  "bequest_med": 291.0
+ },
+ "TW|full|mortgage|FIX": {
+  "ruin_alive_pct": 0.02,
+  "ruin_age_med": 92.4,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1831.0,
+  "lifetime_p5": 989.0,
+  "bequest_med": 14324.0
+ },
+ "TW|full|mortgage|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 2012.0,
+  "lifetime_p5": 1040.0,
+  "bequest_med": 13214.0
+ },
+ "TW|full|mortgage|VPW": {
+  "ruin_alive_pct": 0.03,
+  "ruin_age_med": 100.9,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 2499.0,
+  "lifetime_p5": 1263.0,
+  "bequest_med": 9112.0
+ },
+ "TW|cut30|own|DEPOSIT": {
+  "ruin_alive_pct": 28.68,
+  "ruin_age_med": 93.6,
+  "floor_breach_pct": 28.36,
+  "lifetime_med": 1655.0,
+  "lifetime_p5": 828.0,
+  "bequest_med": 129.0
+ },
+ "TW|cut30|own|FIX": {
+  "ruin_alive_pct": 0.15,
+  "ruin_age_med": 91.4,
+  "floor_breach_pct": 0.14,
+  "lifetime_med": 1655.0,
+  "lifetime_p5": 828.0,
+  "bequest_med": 13678.0
+ },
+ "TW|cut30|own|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1888.0,
+  "lifetime_p5": 889.0,
+  "bequest_med": 12259.0
+ },
+ "TW|cut30|own|VPW": {
+  "ruin_alive_pct": 0.46,
+  "ruin_age_med": 101.0,
+  "floor_breach_pct": 0.46,
+  "lifetime_med": 2516.0,
+  "lifetime_p5": 1127.0,
+  "bequest_med": 7003.0
+ },
+ "TW|cut30|renter|DEPOSIT": {
+  "ruin_alive_pct": 67.73,
+  "ruin_age_med": 86.2,
+  "floor_breach_pct": 67.58,
+  "lifetime_med": 1782.0,
+  "lifetime_p5": 966.0,
+  "bequest_med": 0.0
+ },
+ "TW|cut30|renter|FIX": {
+  "ruin_alive_pct": 1.5,
+  "ruin_age_med": 88.7,
+  "floor_breach_pct": 1.5,
+  "lifetime_med": 1928.0,
+  "lifetime_p5": 966.0,
+  "bequest_med": 10755.0
+ },
+ "TW|cut30|renter|GK": {
+  "ruin_alive_pct": 0.02,
+  "ruin_age_med": 94.0,
+  "floor_breach_pct": 1.34,
+  "lifetime_med": 2172.0,
+  "lifetime_p5": 1025.0,
+  "bequest_med": 9333.0
+ },
+ "TW|cut30|renter|VPW": {
+  "ruin_alive_pct": 1.09,
+  "ruin_age_med": 100.2,
+  "floor_breach_pct": 1.6,
+  "lifetime_med": 2723.0,
+  "lifetime_p5": 1154.0,
+  "bequest_med": 5913.0
+ },
+ "TW|cut30|mortgage|DEPOSIT": {
+  "ruin_alive_pct": 57.87,
+  "ruin_age_med": 88.2,
+  "floor_breach_pct": 57.45,
+  "lifetime_med": 1782.0,
+  "lifetime_p5": 990.0,
+  "bequest_med": 0.0
+ },
+ "TW|cut30|mortgage|FIX": {
+  "ruin_alive_pct": 0.86,
+  "ruin_age_med": 88.8,
+  "floor_breach_pct": 0.85,
+  "lifetime_med": 1830.0,
+  "lifetime_p5": 990.0,
+  "bequest_med": 10736.0
+ },
+ "TW|cut30|mortgage|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 2063.0,
+  "lifetime_p5": 1042.0,
+  "bequest_med": 9514.0
+ },
+ "TW|cut30|mortgage|VPW": {
+  "ruin_alive_pct": 0.46,
+  "ruin_age_med": 101.0,
+  "floor_breach_pct": 0.48,
+  "lifetime_med": 2535.0,
+  "lifetime_p5": 1148.0,
+  "bequest_med": 6915.0
+ },
+ "TW|zero|own|DEPOSIT": {
+  "ruin_alive_pct": 90.28,
+  "ruin_age_med": 79.0,
+  "floor_breach_pct": 90.16,
+  "lifetime_med": 1000.0,
+  "lifetime_p5": 828.0,
+  "bequest_med": 0.0
+ },
+ "TW|zero|own|FIX": {
+  "ruin_alive_pct": 16.59,
+  "ruin_age_med": 84.5,
+  "floor_breach_pct": 16.56,
+  "lifetime_med": 1551.0,
+  "lifetime_p5": 815.0,
+  "bequest_med": 5431.0
+ },
+ "TW|zero|own|GK": {
+  "ruin_alive_pct": 1.14,
+  "ruin_age_med": 90.6,
+  "floor_breach_pct": 9.17,
+  "lifetime_med": 1720.0,
+  "lifetime_p5": 820.0,
+  "bequest_med": 4836.0
+ },
+ "TW|zero|own|VPW": {
+  "ruin_alive_pct": 1.93,
+  "ruin_age_med": 100.1,
+  "floor_breach_pct": 16.58,
+  "lifetime_med": 2104.0,
+  "lifetime_p5": 726.0,
+  "bequest_med": 4947.0
+ },
+ "TW|zero|renter|DEPOSIT": {
+  "ruin_alive_pct": 94.31,
+  "ruin_age_med": 77.0,
+  "floor_breach_pct": 94.21,
+  "lifetime_med": 1000.0,
+  "lifetime_p5": 966.0,
+  "bequest_med": 0.0
+ },
+ "TW|zero|renter|FIX": {
+  "ruin_alive_pct": 31.26,
+  "ruin_age_med": 82.5,
+  "floor_breach_pct": 31.21,
+  "lifetime_med": 1652.0,
+  "lifetime_p5": 900.0,
+  "bequest_med": 2801.0
+ },
+ "TW|zero|renter|GK": {
+  "ruin_alive_pct": 12.57,
+  "ruin_age_med": 86.5,
+  "floor_breach_pct": 40.26,
+  "lifetime_med": 1810.0,
+  "lifetime_p5": 902.0,
+  "bequest_med": 2983.0
+ },
+ "TW|zero|renter|VPW": {
+  "ruin_alive_pct": 7.42,
+  "ruin_age_med": 90.2,
+  "floor_breach_pct": 99.52,
+  "lifetime_med": 2058.0,
+  "lifetime_p5": 801.0,
+  "bequest_med": 4025.0
+ },
+ "TW|zero|mortgage|DEPOSIT": {
+  "ruin_alive_pct": 94.79,
+  "ruin_age_med": 76.5,
+  "floor_breach_pct": 94.75,
+  "lifetime_med": 1000.0,
+  "lifetime_p5": 992.0,
+  "bequest_med": 0.0
+ },
+ "TW|zero|mortgage|FIX": {
+  "ruin_alive_pct": 30.72,
+  "ruin_age_med": 81.9,
+  "floor_breach_pct": 30.63,
+  "lifetime_med": 1591.0,
+  "lifetime_p5": 909.0,
+  "bequest_med": 2786.0
+ },
+ "TW|zero|mortgage|GK": {
+  "ruin_alive_pct": 4.4,
+  "ruin_age_med": 88.9,
+  "floor_breach_pct": 20.27,
+  "lifetime_med": 1762.0,
+  "lifetime_p5": 904.0,
+  "bequest_med": 3001.0
+ },
+ "TW|zero|mortgage|VPW": {
+  "ruin_alive_pct": 2.56,
+  "ruin_age_med": 100.1,
+  "floor_breach_pct": 99.14,
+  "lifetime_med": 2071.0,
+  "lifetime_p5": 762.0,
+  "bequest_med": 4638.0
+ },
+ "US_STRESS|full|own|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1650.0,
+  "lifetime_p5": 825.0,
+  "bequest_med": 472.0
+ },
+ "US_STRESS|full|own|FIX": {
+  "ruin_alive_pct": 0.06,
+  "ruin_age_med": 95.6,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1650.0,
+  "lifetime_p5": 825.0,
+  "bequest_med": 7957.0
+ },
+ "US_STRESS|full|own|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1785.0,
+  "lifetime_p5": 863.0,
+  "bequest_med": 7466.0
+ },
+ "US_STRESS|full|own|VPW": {
+  "ruin_alive_pct": 0.33,
+  "ruin_age_med": 100.9,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 2346.0,
+  "lifetime_p5": 1157.0,
+  "bequest_med": 4120.0
+ },
+ "US_STRESS|full|renter|DEPOSIT": {
+  "ruin_alive_pct": 16.05,
+  "ruin_age_med": 96.4,
+  "floor_breach_pct": 15.79,
+  "lifetime_med": 1923.0,
+  "lifetime_p5": 962.0,
+  "bequest_med": 197.0
+ },
+ "US_STRESS|full|renter|FIX": {
+  "ruin_alive_pct": 0.98,
+  "ruin_age_med": 88.5,
+  "floor_breach_pct": 0.97,
+  "lifetime_med": 1922.0,
+  "lifetime_p5": 962.0,
+  "bequest_med": 6383.0
+ },
+ "US_STRESS|full|renter|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.61,
+  "lifetime_med": 2082.0,
+  "lifetime_p5": 1007.0,
+  "bequest_med": 5772.0
+ },
+ "US_STRESS|full|renter|VPW": {
+  "ruin_alive_pct": 1.51,
+  "ruin_age_med": 100.2,
+  "floor_breach_pct": 1.73,
+  "lifetime_med": 2621.0,
+  "lifetime_p5": 1224.0,
+  "bequest_med": 2918.0
+ },
+ "US_STRESS|full|mortgage|DEPOSIT": {
+  "ruin_alive_pct": 0.29,
+  "ruin_age_med": 104.4,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1823.0,
+  "lifetime_p5": 985.0,
+  "bequest_med": 298.0
+ },
+ "US_STRESS|full|mortgage|FIX": {
+  "ruin_alive_pct": 0.35,
+  "ruin_age_med": 89.3,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1823.0,
+  "lifetime_p5": 985.0,
+  "bequest_med": 6502.0
+ },
+ "US_STRESS|full|mortgage|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1977.0,
+  "lifetime_p5": 1027.0,
+  "bequest_med": 5942.0
+ },
+ "US_STRESS|full|mortgage|VPW": {
+  "ruin_alive_pct": 0.35,
+  "ruin_age_med": 100.9,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 2410.0,
+  "lifetime_p5": 1213.0,
+  "bequest_med": 3807.0
+ },
+ "US_STRESS|cut30|own|DEPOSIT": {
+  "ruin_alive_pct": 27.37,
+  "ruin_age_med": 93.8,
+  "floor_breach_pct": 27.06,
+  "lifetime_med": 1647.0,
+  "lifetime_p5": 824.0,
+  "bequest_med": 137.0
+ },
+ "US_STRESS|cut30|own|FIX": {
+  "ruin_alive_pct": 1.56,
+  "ruin_age_med": 89.7,
+  "floor_breach_pct": 1.54,
+  "lifetime_med": 1644.0,
+  "lifetime_p5": 824.0,
+  "bequest_med": 5997.0
+ },
+ "US_STRESS|cut30|own|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 1800.0,
+  "lifetime_p5": 864.0,
+  "bequest_med": 5386.0
+ },
+ "US_STRESS|cut30|own|VPW": {
+  "ruin_alive_pct": 1.41,
+  "ruin_age_med": 100.8,
+  "floor_breach_pct": 1.48,
+  "lifetime_med": 2310.0,
+  "lifetime_p5": 1045.0,
+  "bequest_med": 2797.0
+ },
+ "US_STRESS|cut30|renter|DEPOSIT": {
+  "ruin_alive_pct": 66.77,
+  "ruin_age_med": 86.3,
+  "floor_breach_pct": 66.62,
+  "lifetime_med": 1782.0,
+  "lifetime_p5": 961.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|cut30|renter|FIX": {
+  "ruin_alive_pct": 7.69,
+  "ruin_age_med": 86.9,
+  "floor_breach_pct": 7.69,
+  "lifetime_med": 1893.0,
+  "lifetime_p5": 961.0,
+  "bequest_med": 4433.0
+ },
+ "US_STRESS|cut30|renter|GK": {
+  "ruin_alive_pct": 0.42,
+  "ruin_age_med": 90.5,
+  "floor_breach_pct": 9.15,
+  "lifetime_med": 2022.0,
+  "lifetime_p5": 989.0,
+  "bequest_med": 3926.0
+ },
+ "US_STRESS|cut30|renter|VPW": {
+  "ruin_alive_pct": 2.76,
+  "ruin_age_med": 100.1,
+  "floor_breach_pct": 8.08,
+  "lifetime_med": 2423.0,
+  "lifetime_p5": 1056.0,
+  "bequest_med": 2395.0
+ },
+ "US_STRESS|cut30|mortgage|DEPOSIT": {
+  "ruin_alive_pct": 56.28,
+  "ruin_age_med": 88.4,
+  "floor_breach_pct": 55.89,
+  "lifetime_med": 1781.0,
+  "lifetime_p5": 986.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|cut30|mortgage|FIX": {
+  "ruin_alive_pct": 5.31,
+  "ruin_age_med": 87.1,
+  "floor_breach_pct": 5.26,
+  "lifetime_med": 1807.0,
+  "lifetime_p5": 986.0,
+  "bequest_med": 4531.0
+ },
+ "US_STRESS|cut30|mortgage|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 1965.0,
+  "lifetime_p5": 1010.0,
+  "bequest_med": 3986.0
+ },
+ "US_STRESS|cut30|mortgage|VPW": {
+  "ruin_alive_pct": 1.41,
+  "ruin_age_med": 100.8,
+  "floor_breach_pct": 1.89,
+  "lifetime_med": 2318.0,
+  "lifetime_p5": 1052.0,
+  "bequest_med": 2772.0
+ },
+ "US_STRESS|zero|own|DEPOSIT": {
+  "ruin_alive_pct": 89.89,
+  "ruin_age_med": 79.2,
+  "floor_breach_pct": 89.8,
+  "lifetime_med": 1000.0,
+  "lifetime_p5": 822.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|zero|own|FIX": {
+  "ruin_alive_pct": 31.93,
+  "ruin_age_med": 82.7,
+  "floor_breach_pct": 31.83,
+  "lifetime_med": 1410.0,
+  "lifetime_p5": 764.0,
+  "bequest_med": 1557.0
+ },
+ "US_STRESS|zero|own|GK": {
+  "ruin_alive_pct": 7.12,
+  "ruin_age_med": 88.4,
+  "floor_breach_pct": 26.5,
+  "lifetime_med": 1469.0,
+  "lifetime_p5": 741.0,
+  "bequest_med": 1885.0
+ },
+ "US_STRESS|zero|own|VPW": {
+  "ruin_alive_pct": 4.97,
+  "ruin_age_med": 99.9,
+  "floor_breach_pct": 35.18,
+  "lifetime_med": 1682.0,
+  "lifetime_p5": 630.0,
+  "bequest_med": 2059.0
+ },
+ "US_STRESS|zero|renter|DEPOSIT": {
+  "ruin_alive_pct": 94.12,
+  "ruin_age_med": 77.1,
+  "floor_breach_pct": 94.11,
+  "lifetime_med": 1000.0,
+  "lifetime_p5": 959.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|zero|renter|FIX": {
+  "ruin_alive_pct": 47.65,
+  "ruin_age_med": 80.8,
+  "floor_breach_pct": 47.6,
+  "lifetime_med": 1458.0,
+  "lifetime_p5": 804.0,
+  "bequest_med": 186.0
+ },
+ "US_STRESS|zero|renter|GK": {
+  "ruin_alive_pct": 29.03,
+  "ruin_age_med": 84.5,
+  "floor_breach_pct": 59.65,
+  "lifetime_med": 1543.0,
+  "lifetime_p5": 808.0,
+  "bequest_med": 945.0
+ },
+ "US_STRESS|zero|renter|VPW": {
+  "ruin_alive_pct": 19.32,
+  "ruin_age_med": 86.2,
+  "floor_breach_pct": 99.38,
+  "lifetime_med": 1589.0,
+  "lifetime_p5": 726.0,
+  "bequest_med": 1502.0
+ },
+ "US_STRESS|zero|mortgage|DEPOSIT": {
+  "ruin_alive_pct": 94.6,
+  "ruin_age_med": 76.6,
+  "floor_breach_pct": 94.5,
+  "lifetime_med": 1000.0,
+  "lifetime_p5": 983.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|zero|mortgage|FIX": {
+  "ruin_alive_pct": 46.7,
+  "ruin_age_med": 80.2,
+  "floor_breach_pct": 46.61,
+  "lifetime_med": 1422.0,
+  "lifetime_p5": 817.0,
+  "bequest_med": 262.0
+ },
+ "US_STRESS|zero|mortgage|GK": {
+  "ruin_alive_pct": 15.98,
+  "ruin_age_med": 86.8,
+  "floor_breach_pct": 39.87,
+  "lifetime_med": 1506.0,
+  "lifetime_p5": 811.0,
+  "bequest_med": 1060.0
+ },
+ "US_STRESS|zero|mortgage|VPW": {
+  "ruin_alive_pct": 7.75,
+  "ruin_age_med": 93.5,
+  "floor_breach_pct": 98.98,
+  "lifetime_med": 1636.0,
+  "lifetime_p5": 678.0,
+  "bequest_med": 1845.0
+ }
+}

@@ -1,0 +1,1304 @@
+{
+ "mortality": {
+  "h_med": 82.5,
+  "w_med": 86.9,
+  "joint_med": 90.2,
+  "p_any95": 24.5
+ },
+ "TW|50M|leave|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4503.0,
+  "lifetime_p5": 2878.0,
+  "bequest_med": 1320.0
+ },
+ "TW|50M|leave|100k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4503.0,
+  "lifetime_p5": 2878.0,
+  "bequest_med": 270985.0
+ },
+ "TW|50M|leave|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.57,
+  "lifetime_med": 5813.0,
+  "lifetime_p5": 3608.0,
+  "bequest_med": 250938.0
+ },
+ "TW|50M|leave|100k|VPW": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.04,
+  "lifetime_med": 7895.0,
+  "lifetime_p5": 5149.0,
+  "bequest_med": 186231.0
+ },
+ "TW|50M|leave|150k|DEPOSIT": {
+  "ruin_alive_pct": 80.61,
+  "ruin_age_med": 82.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 80.4,
+  "lifetime_med": 5806.0,
+  "lifetime_p5": 4319.0,
+  "bequest_med": 0.0
+ },
+ "TW|50M|leave|150k|FIX": {
+  "ruin_alive_pct": 0.22,
+  "ruin_age_med": 84.3,
+  "ruin_before65_pct": 0.01,
+  "floor_breach_pct": 0.22,
+  "lifetime_med": 6753.0,
+  "lifetime_p5": 4318.0,
+  "bequest_med": 214493.0
+ },
+ "TW|50M|leave|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.05,
+  "lifetime_med": 8762.0,
+  "lifetime_p5": 5260.0,
+  "bequest_med": 185802.0
+ },
+ "TW|50M|leave|150k|VPW": {
+  "ruin_alive_pct": 0.06,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.11,
+  "lifetime_med": 11178.0,
+  "lifetime_p5": 6645.0,
+  "bequest_med": 139210.0
+ },
+ "TW|50M|leave|200k|DEPOSIT": {
+  "ruin_alive_pct": 96.82,
+  "ruin_age_med": 72.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 96.77,
+  "lifetime_med": 5806.0,
+  "lifetime_p5": 5286.0,
+  "bequest_med": 0.0
+ },
+ "TW|50M|leave|200k|FIX": {
+  "ruin_alive_pct": 2.75,
+  "ruin_age_med": 78.8,
+  "ruin_before65_pct": 0.02,
+  "floor_breach_pct": 2.75,
+  "lifetime_med": 8949.0,
+  "lifetime_p5": 5663.0,
+  "bequest_med": 158090.0
+ },
+ "TW|50M|leave|200k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.03,
+  "lifetime_med": 11435.0,
+  "lifetime_p5": 6551.0,
+  "bequest_med": 127533.0
+ },
+ "TW|50M|leave|200k|VPW": {
+  "ruin_alive_pct": 0.18,
+  "ruin_age_med": 100.3,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.22,
+  "lifetime_med": 13848.0,
+  "lifetime_p5": 7433.0,
+  "bequest_med": 110896.0
+ },
+ "TW|50M|union|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4500.0,
+  "lifetime_p5": 2874.0,
+  "bequest_med": 1697.0
+ },
+ "TW|50M|union|100k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4500.0,
+  "lifetime_p5": 2874.0,
+  "bequest_med": 270890.0
+ },
+ "TW|50M|union|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.68,
+  "lifetime_med": 5588.0,
+  "lifetime_p5": 3515.0,
+  "bequest_med": 253139.0
+ },
+ "TW|50M|union|100k|VPW": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.12,
+  "lifetime_med": 7355.0,
+  "lifetime_p5": 4888.0,
+  "bequest_med": 195004.0
+ },
+ "TW|50M|union|150k|DEPOSIT": {
+  "ruin_alive_pct": 74.26,
+  "ruin_age_med": 84.8,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 73.93,
+  "lifetime_med": 6163.0,
+  "lifetime_p5": 4316.0,
+  "bequest_med": 0.0
+ },
+ "TW|50M|union|150k|FIX": {
+  "ruin_alive_pct": 0.11,
+  "ruin_age_med": 82.3,
+  "ruin_before65_pct": 0.01,
+  "floor_breach_pct": 0.11,
+  "lifetime_med": 6750.0,
+  "lifetime_p5": 4315.0,
+  "bequest_med": 214345.0
+ },
+ "TW|50M|union|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.05,
+  "lifetime_med": 8546.0,
+  "lifetime_p5": 5206.0,
+  "bequest_med": 188835.0
+ },
+ "TW|50M|union|150k|VPW": {
+  "ruin_alive_pct": 0.05,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.17,
+  "lifetime_med": 10642.0,
+  "lifetime_p5": 6421.0,
+  "bequest_med": 148680.0
+ },
+ "TW|50M|union|200k|DEPOSIT": {
+  "ruin_alive_pct": 96.77,
+  "ruin_age_med": 72.6,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 96.73,
+  "lifetime_med": 6163.0,
+  "lifetime_p5": 5331.0,
+  "bequest_med": 0.0
+ },
+ "TW|50M|union|200k|FIX": {
+  "ruin_alive_pct": 2.44,
+  "ruin_age_med": 78.7,
+  "ruin_before65_pct": 0.03,
+  "floor_breach_pct": 2.43,
+  "lifetime_med": 8955.0,
+  "lifetime_p5": 5698.0,
+  "bequest_med": 157879.0
+ },
+ "TW|50M|union|200k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.05,
+  "lifetime_med": 11265.0,
+  "lifetime_p5": 6570.0,
+  "bequest_med": 130388.0
+ },
+ "TW|50M|union|200k|VPW": {
+  "ruin_alive_pct": 0.16,
+  "ruin_age_med": 100.8,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.28,
+  "lifetime_med": 13408.0,
+  "lifetime_p5": 7397.0,
+  "bequest_med": 118803.0
+ },
+ "TW|50M|zero|100k|DEPOSIT": {
+  "ruin_alive_pct": 26.53,
+  "ruin_age_med": 93.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 26.48,
+  "lifetime_med": 4507.0,
+  "lifetime_p5": 2878.0,
+  "bequest_med": 493.0
+ },
+ "TW|50M|zero|100k|FIX": {
+  "ruin_alive_pct": 0.01,
+  "ruin_age_med": 80.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 4507.0,
+  "lifetime_p5": 2878.0,
+  "bequest_med": 261642.0
+ },
+ "TW|50M|zero|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.8,
+  "lifetime_med": 6187.0,
+  "lifetime_p5": 3678.0,
+  "bequest_med": 236014.0
+ },
+ "TW|50M|zero|100k|VPW": {
+  "ruin_alive_pct": 0.05,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.15,
+  "lifetime_med": 8686.0,
+  "lifetime_p5": 5404.0,
+  "bequest_med": 167655.0
+ },
+ "TW|50M|zero|150k|DEPOSIT": {
+  "ruin_alive_pct": 88.71,
+  "ruin_age_med": 78.0,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 88.59,
+  "lifetime_med": 5000.0,
+  "lifetime_p5": 4317.0,
+  "bequest_med": 0.0
+ },
+ "TW|50M|zero|150k|FIX": {
+  "ruin_alive_pct": 0.45,
+  "ruin_age_med": 80.2,
+  "ruin_before65_pct": 0.01,
+  "floor_breach_pct": 0.45,
+  "lifetime_med": 6753.0,
+  "lifetime_p5": 4311.0,
+  "bequest_med": 205691.0
+ },
+ "TW|50M|zero|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.23,
+  "lifetime_med": 9051.0,
+  "lifetime_p5": 5215.0,
+  "bequest_med": 173867.0
+ },
+ "TW|50M|zero|150k|VPW": {
+  "ruin_alive_pct": 0.13,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.23,
+  "lifetime_med": 11806.0,
+  "lifetime_p5": 6638.0,
+  "bequest_med": 123110.0
+ },
+ "TW|50M|zero|200k|DEPOSIT": {
+  "ruin_alive_pct": 97.49,
+  "ruin_age_med": 71.0,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 97.48,
+  "lifetime_med": 5000.0,
+  "lifetime_p5": 5000.0,
+  "bequest_med": 0.0
+ },
+ "TW|50M|zero|200k|FIX": {
+  "ruin_alive_pct": 4.18,
+  "ruin_age_med": 78.5,
+  "ruin_before65_pct": 0.02,
+  "floor_breach_pct": 4.18,
+  "lifetime_med": 8910.0,
+  "lifetime_p5": 5547.0,
+  "bequest_med": 149071.0
+ },
+ "TW|50M|zero|200k|GK": {
+  "ruin_alive_pct": 0.01,
+  "ruin_age_med": 81.0,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.24,
+  "lifetime_med": 11607.0,
+  "lifetime_p5": 6285.0,
+  "bequest_med": 116654.0
+ },
+ "TW|50M|zero|200k|VPW": {
+  "ruin_alive_pct": 0.25,
+  "ruin_age_med": 100.3,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.35,
+  "lifetime_med": 14231.0,
+  "lifetime_p5": 7234.0,
+  "bequest_med": 98878.0
+ },
+ "TW|100M|leave|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4503.0,
+  "lifetime_p5": 2878.0,
+  "bequest_med": 6326.0
+ },
+ "TW|100M|leave|100k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4503.0,
+  "lifetime_p5": 2878.0,
+  "bequest_med": 644520.0
+ },
+ "TW|100M|leave|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.21,
+  "lifetime_med": 5883.0,
+  "lifetime_p5": 3694.0,
+  "bequest_med": 620663.0
+ },
+ "TW|100M|leave|100k|VPW": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 8184.0,
+  "lifetime_p5": 5447.0,
+  "bequest_med": 541970.0
+ },
+ "TW|100M|leave|150k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 6756.0,
+  "lifetime_p5": 4319.0,
+  "bequest_med": 4069.0
+ },
+ "TW|100M|leave|150k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 6756.0,
+  "lifetime_p5": 4319.0,
+  "bequest_med": 589423.0
+ },
+ "TW|100M|leave|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 8978.0,
+  "lifetime_p5": 5536.0,
+  "bequest_med": 552136.0
+ },
+ "TW|100M|leave|150k|VPW": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 12634.0,
+  "lifetime_p5": 8263.0,
+  "bequest_med": 432560.0
+ },
+ "TW|100M|leave|200k|DEPOSIT": {
+  "ruin_alive_pct": 6.42,
+  "ruin_age_med": 99.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 6.31,
+  "lifetime_med": 9008.0,
+  "lifetime_p5": 5759.0,
+  "bequest_med": 1811.0
+ },
+ "TW|100M|leave|200k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 9008.0,
+  "lifetime_p5": 5759.0,
+  "bequest_med": 532454.0
+ },
+ "TW|100M|leave|200k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 12018.0,
+  "lifetime_p5": 7329.0,
+  "bequest_med": 486253.0
+ },
+ "TW|100M|leave|200k|VPW": {
+  "ruin_alive_pct": 0.01,
+  "ruin_age_med": 100.9,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 16599.0,
+  "lifetime_p5": 10589.0,
+  "bequest_med": 353363.0
+ },
+ "TW|100M|union|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4500.0,
+  "lifetime_p5": 2874.0,
+  "bequest_med": 6702.0
+ },
+ "TW|100M|union|100k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4500.0,
+  "lifetime_p5": 2874.0,
+  "bequest_med": 644467.0
+ },
+ "TW|100M|union|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.25,
+  "lifetime_med": 5663.0,
+  "lifetime_p5": 3617.0,
+  "bequest_med": 621829.0
+ },
+ "TW|100M|union|100k|VPW": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 7689.0,
+  "lifetime_p5": 5244.0,
+  "bequest_med": 547617.0
+ },
+ "TW|100M|union|150k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 6753.0,
+  "lifetime_p5": 4316.0,
+  "bequest_med": 4440.0
+ },
+ "TW|100M|union|150k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 6753.0,
+  "lifetime_p5": 4316.0,
+  "bequest_med": 589520.0
+ },
+ "TW|100M|union|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 8760.0,
+  "lifetime_p5": 5462.0,
+  "bequest_med": 554088.0
+ },
+ "TW|100M|union|150k|VPW": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 12126.0,
+  "lifetime_p5": 8050.0,
+  "bequest_med": 438480.0
+ },
+ "TW|100M|union|200k|DEPOSIT": {
+  "ruin_alive_pct": 1.22,
+  "ruin_age_med": 103.1,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 1.18,
+  "lifetime_med": 9006.0,
+  "lifetime_p5": 5755.0,
+  "bequest_med": 2185.0
+ },
+ "TW|100M|union|200k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 9006.0,
+  "lifetime_p5": 5755.0,
+  "bequest_med": 531732.0
+ },
+ "TW|100M|union|200k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 11810.0,
+  "lifetime_p5": 7280.0,
+  "bequest_med": 488943.0
+ },
+ "TW|100M|union|200k|VPW": {
+  "ruin_alive_pct": 0.01,
+  "ruin_age_med": 102.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 16056.0,
+  "lifetime_p5": 10350.0,
+  "bequest_med": 362323.0
+ },
+ "TW|100M|zero|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4507.0,
+  "lifetime_p5": 2878.0,
+  "bequest_med": 5500.0
+ },
+ "TW|100M|zero|100k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4507.0,
+  "lifetime_p5": 2878.0,
+  "bequest_med": 635949.0
+ },
+ "TW|100M|zero|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.26,
+  "lifetime_med": 6279.0,
+  "lifetime_p5": 3829.0,
+  "bequest_med": 606800.0
+ },
+ "TW|100M|zero|100k|VPW": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 9014.0,
+  "lifetime_p5": 5756.0,
+  "bequest_med": 523283.0
+ },
+ "TW|100M|zero|150k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 6761.0,
+  "lifetime_p5": 4317.0,
+  "bequest_med": 3241.0
+ },
+ "TW|100M|zero|150k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 6761.0,
+  "lifetime_p5": 4317.0,
+  "bequest_med": 580350.0
+ },
+ "TW|100M|zero|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 9359.0,
+  "lifetime_p5": 5653.0,
+  "bequest_med": 539002.0
+ },
+ "TW|100M|zero|150k|VPW": {
+  "ruin_alive_pct": 0.01,
+  "ruin_age_med": 103.1,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 13447.0,
+  "lifetime_p5": 8556.0,
+  "bequest_med": 414541.0
+ },
+ "TW|100M|zero|200k|DEPOSIT": {
+  "ruin_alive_pct": 26.53,
+  "ruin_age_med": 93.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 26.33,
+  "lifetime_med": 9015.0,
+  "lifetime_p5": 5756.0,
+  "bequest_med": 986.0
+ },
+ "TW|100M|zero|200k|FIX": {
+  "ruin_alive_pct": 0.01,
+  "ruin_age_med": 80.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.01,
+  "lifetime_med": 9014.0,
+  "lifetime_p5": 5756.0,
+  "bequest_med": 523283.0
+ },
+ "TW|100M|zero|200k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 12374.0,
+  "lifetime_p5": 7363.0,
+  "bequest_med": 472027.0
+ },
+ "TW|100M|zero|200k|VPW": {
+  "ruin_alive_pct": 0.04,
+  "ruin_age_med": 100.4,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.04,
+  "lifetime_med": 17371.0,
+  "lifetime_p5": 10809.0,
+  "bequest_med": 335310.0
+ },
+ "US_STRESS|50M|leave|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4471.0,
+  "lifetime_p5": 2854.0,
+  "bequest_med": 1356.0
+ },
+ "US_STRESS|50M|leave|100k|FIX": {
+  "ruin_alive_pct": 0.18,
+  "ruin_age_med": 86.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.18,
+  "lifetime_med": 4469.0,
+  "lifetime_p5": 2854.0,
+  "bequest_med": 89461.0
+ },
+ "US_STRESS|50M|leave|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 4.53,
+  "lifetime_med": 5622.0,
+  "lifetime_p5": 3320.0,
+  "bequest_med": 80997.0
+ },
+ "US_STRESS|50M|leave|100k|VPW": {
+  "ruin_alive_pct": 0.19,
+  "ruin_age_med": 100.1,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 1.63,
+  "lifetime_med": 7659.0,
+  "lifetime_p5": 4751.0,
+  "bequest_med": 55018.0
+ },
+ "US_STRESS|50M|leave|150k|DEPOSIT": {
+  "ruin_alive_pct": 79.57,
+  "ruin_age_med": 82.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 79.45,
+  "lifetime_med": 5806.0,
+  "lifetime_p5": 4280.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|50M|leave|150k|FIX": {
+  "ruin_alive_pct": 3.47,
+  "ruin_age_med": 80.7,
+  "ruin_before65_pct": 0.04,
+  "floor_breach_pct": 3.47,
+  "lifetime_med": 6651.0,
+  "lifetime_p5": 4206.0,
+  "bequest_med": 64187.0
+ },
+ "US_STRESS|50M|leave|150k|GK": {
+  "ruin_alive_pct": 0.01,
+  "ruin_age_med": 98.9,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 1.28,
+  "lifetime_med": 8290.0,
+  "lifetime_p5": 4530.0,
+  "bequest_med": 54441.0
+ },
+ "US_STRESS|50M|leave|150k|VPW": {
+  "ruin_alive_pct": 0.56,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 2.04,
+  "lifetime_med": 10428.0,
+  "lifetime_p5": 5521.0,
+  "bequest_med": 36078.0
+ },
+ "US_STRESS|50M|leave|200k|DEPOSIT": {
+  "ruin_alive_pct": 96.69,
+  "ruin_age_med": 72.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 96.68,
+  "lifetime_med": 5806.0,
+  "lifetime_p5": 5286.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|50M|leave|200k|FIX": {
+  "ruin_alive_pct": 14.5,
+  "ruin_age_med": 76.8,
+  "ruin_before65_pct": 0.52,
+  "floor_breach_pct": 14.47,
+  "lifetime_med": 8590.0,
+  "lifetime_p5": 5056.0,
+  "bequest_med": 39738.0
+ },
+ "US_STRESS|50M|leave|200k|GK": {
+  "ruin_alive_pct": 0.12,
+  "ruin_age_med": 93.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 1.51,
+  "lifetime_med": 10378.0,
+  "lifetime_p5": 5267.0,
+  "bequest_med": 31720.0
+ },
+ "US_STRESS|50M|leave|200k|VPW": {
+  "ruin_alive_pct": 1.05,
+  "ruin_age_med": 100.3,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 2.51,
+  "lifetime_med": 12314.0,
+  "lifetime_p5": 5668.0,
+  "bequest_med": 26575.0
+ },
+ "US_STRESS|50M|union|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4470.0,
+  "lifetime_p5": 2852.0,
+  "bequest_med": 1728.0
+ },
+ "US_STRESS|50M|union|100k|FIX": {
+  "ruin_alive_pct": 0.07,
+  "ruin_age_med": 84.6,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.07,
+  "lifetime_med": 4470.0,
+  "lifetime_p5": 2852.0,
+  "bequest_med": 90028.0
+ },
+ "US_STRESS|50M|union|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 5.71,
+  "lifetime_med": 5428.0,
+  "lifetime_p5": 3280.0,
+  "bequest_med": 82943.0
+ },
+ "US_STRESS|50M|union|100k|VPW": {
+  "ruin_alive_pct": 0.08,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 2.39,
+  "lifetime_med": 7138.0,
+  "lifetime_p5": 4570.0,
+  "bequest_med": 60776.0
+ },
+ "US_STRESS|50M|union|150k|DEPOSIT": {
+  "ruin_alive_pct": 72.65,
+  "ruin_age_med": 85.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 72.39,
+  "lifetime_med": 6161.0,
+  "lifetime_p5": 4280.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|50M|union|150k|FIX": {
+  "ruin_alive_pct": 2.72,
+  "ruin_age_med": 80.3,
+  "ruin_before65_pct": 0.04,
+  "floor_breach_pct": 2.72,
+  "lifetime_med": 6663.0,
+  "lifetime_p5": 4243.0,
+  "bequest_med": 65044.0
+ },
+ "US_STRESS|50M|union|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 1.55,
+  "lifetime_med": 8159.0,
+  "lifetime_p5": 4650.0,
+  "bequest_med": 55942.0
+ },
+ "US_STRESS|50M|union|150k|VPW": {
+  "ruin_alive_pct": 0.37,
+  "ruin_age_med": 100.3,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 2.68,
+  "lifetime_med": 10043.0,
+  "lifetime_p5": 5547.0,
+  "bequest_med": 40535.0
+ },
+ "US_STRESS|50M|union|200k|DEPOSIT": {
+  "ruin_alive_pct": 96.66,
+  "ruin_age_med": 72.9,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 96.61,
+  "lifetime_med": 6163.0,
+  "lifetime_p5": 5331.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|50M|union|200k|FIX": {
+  "ruin_alive_pct": 13.29,
+  "ruin_age_med": 76.3,
+  "ruin_before65_pct": 0.73,
+  "floor_breach_pct": 13.26,
+  "lifetime_med": 8634.0,
+  "lifetime_p5": 5221.0,
+  "bequest_med": 40449.0
+ },
+ "US_STRESS|50M|union|200k|GK": {
+  "ruin_alive_pct": 0.04,
+  "ruin_age_med": 86.3,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 1.21,
+  "lifetime_med": 10386.0,
+  "lifetime_p5": 5440.0,
+  "bequest_med": 32702.0
+ },
+ "US_STRESS|50M|union|200k|VPW": {
+  "ruin_alive_pct": 0.85,
+  "ruin_age_med": 100.4,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 3.16,
+  "lifetime_med": 12131.0,
+  "lifetime_p5": 5797.0,
+  "bequest_med": 29297.0
+ },
+ "US_STRESS|50M|zero|100k|DEPOSIT": {
+  "ruin_alive_pct": 24.7,
+  "ruin_age_med": 93.6,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 24.57,
+  "lifetime_med": 4468.0,
+  "lifetime_p5": 2853.0,
+  "bequest_med": 533.0
+ },
+ "US_STRESS|50M|zero|100k|FIX": {
+  "ruin_alive_pct": 0.68,
+  "ruin_age_med": 82.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.68,
+  "lifetime_med": 4459.0,
+  "lifetime_p5": 2849.0,
+  "bequest_med": 83859.0
+ },
+ "US_STRESS|50M|zero|100k|GK": {
+  "ruin_alive_pct": 0.05,
+  "ruin_age_med": 84.1,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 6.93,
+  "lifetime_med": 5860.0,
+  "lifetime_p5": 3193.0,
+  "bequest_med": 74112.0
+ },
+ "US_STRESS|50M|zero|100k|VPW": {
+  "ruin_alive_pct": 0.5,
+  "ruin_age_med": 99.9,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 3.34,
+  "lifetime_med": 8266.0,
+  "lifetime_p5": 4675.0,
+  "bequest_med": 45443.0
+ },
+ "US_STRESS|50M|zero|150k|DEPOSIT": {
+  "ruin_alive_pct": 88.12,
+  "ruin_age_med": 78.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 88.07,
+  "lifetime_med": 5000.0,
+  "lifetime_p5": 4280.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|50M|zero|150k|FIX": {
+  "ruin_alive_pct": 5.77,
+  "ruin_age_med": 80.0,
+  "ruin_before65_pct": 0.04,
+  "floor_breach_pct": 5.74,
+  "lifetime_med": 6597.0,
+  "lifetime_p5": 4100.0,
+  "bequest_med": 58930.0
+ },
+ "US_STRESS|50M|zero|150k|GK": {
+  "ruin_alive_pct": 0.2,
+  "ruin_age_med": 90.7,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 3.98,
+  "lifetime_med": 8347.0,
+  "lifetime_p5": 4206.0,
+  "bequest_med": 48849.0
+ },
+ "US_STRESS|50M|zero|150k|VPW": {
+  "ruin_alive_pct": 0.98,
+  "ruin_age_med": 100.1,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 3.85,
+  "lifetime_med": 10713.0,
+  "lifetime_p5": 5115.0,
+  "bequest_med": 30269.0
+ },
+ "US_STRESS|50M|zero|200k|DEPOSIT": {
+  "ruin_alive_pct": 97.4,
+  "ruin_age_med": 71.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 97.39,
+  "lifetime_med": 5000.0,
+  "lifetime_p5": 5000.0,
+  "bequest_med": 0.0
+ },
+ "US_STRESS|50M|zero|200k|FIX": {
+  "ruin_alive_pct": 18.28,
+  "ruin_age_med": 76.1,
+  "ruin_before65_pct": 0.52,
+  "floor_breach_pct": 18.28,
+  "lifetime_med": 8450.0,
+  "lifetime_p5": 4589.0,
+  "bequest_med": 34803.0
+ },
+ "US_STRESS|50M|zero|200k|GK": {
+  "ruin_alive_pct": 0.69,
+  "ruin_age_med": 85.6,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 5.47,
+  "lifetime_med": 10187.0,
+  "lifetime_p5": 4793.0,
+  "bequest_med": 28339.0
+ },
+ "US_STRESS|50M|zero|200k|VPW": {
+  "ruin_alive_pct": 1.47,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 4.35,
+  "lifetime_med": 12251.0,
+  "lifetime_p5": 5185.0,
+  "bequest_med": 23117.0
+ },
+ "US_STRESS|100M|leave|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4471.0,
+  "lifetime_p5": 2854.0,
+  "bequest_med": 6372.0
+ },
+ "US_STRESS|100M|leave|100k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4471.0,
+  "lifetime_p5": 2854.0,
+  "bequest_med": 222929.0
+ },
+ "US_STRESS|100M|leave|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 2.08,
+  "lifetime_med": 5732.0,
+  "lifetime_p5": 3482.0,
+  "bequest_med": 213138.0
+ },
+ "US_STRESS|100M|leave|100k|VPW": {
+  "ruin_alive_pct": 0.01,
+  "ruin_age_med": 102.0,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.02,
+  "lifetime_med": 8115.0,
+  "lifetime_p5": 5382.0,
+  "bequest_med": 179042.0
+ },
+ "US_STRESS|100M|leave|150k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 6705.0,
+  "lifetime_p5": 4280.0,
+  "bequest_med": 4123.0
+ },
+ "US_STRESS|100M|leave|150k|FIX": {
+  "ruin_alive_pct": 0.03,
+  "ruin_age_med": 88.8,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.03,
+  "lifetime_med": 6705.0,
+  "lifetime_p5": 4280.0,
+  "bequest_med": 198306.0
+ },
+ "US_STRESS|100M|leave|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.22,
+  "lifetime_med": 8680.0,
+  "lifetime_p5": 5110.0,
+  "bequest_med": 183197.0
+ },
+ "US_STRESS|100M|leave|150k|VPW": {
+  "ruin_alive_pct": 0.08,
+  "ruin_age_med": 100.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.1,
+  "lifetime_med": 12387.0,
+  "lifetime_p5": 7968.0,
+  "bequest_med": 131774.0
+ },
+ "US_STRESS|100M|leave|200k|DEPOSIT": {
+  "ruin_alive_pct": 5.23,
+  "ruin_age_med": 99.7,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 5.15,
+  "lifetime_med": 8940.0,
+  "lifetime_p5": 5705.0,
+  "bequest_med": 1887.0
+ },
+ "US_STRESS|100M|leave|200k|FIX": {
+  "ruin_alive_pct": 0.37,
+  "ruin_age_med": 83.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.37,
+  "lifetime_med": 8928.0,
+  "lifetime_p5": 5702.0,
+  "bequest_med": 173101.0
+ },
+ "US_STRESS|100M|leave|200k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.03,
+  "lifetime_med": 11507.0,
+  "lifetime_p5": 6546.0,
+  "bequest_med": 154545.0
+ },
+ "US_STRESS|100M|leave|200k|VPW": {
+  "ruin_alive_pct": 0.22,
+  "ruin_age_med": 100.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.27,
+  "lifetime_med": 15976.0,
+  "lifetime_p5": 9519.0,
+  "bequest_med": 99977.0
+ },
+ "US_STRESS|100M|union|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4470.0,
+  "lifetime_p5": 2852.0,
+  "bequest_med": 6743.0
+ },
+ "US_STRESS|100M|union|100k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4470.0,
+  "lifetime_p5": 2852.0,
+  "bequest_med": 223842.0
+ },
+ "US_STRESS|100M|union|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 2.5,
+  "lifetime_med": 5532.0,
+  "lifetime_p5": 3436.0,
+  "bequest_med": 215071.0
+ },
+ "US_STRESS|100M|union|100k|VPW": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.02,
+  "lifetime_med": 7627.0,
+  "lifetime_p5": 5186.0,
+  "bequest_med": 182683.0
+ },
+ "US_STRESS|100M|union|150k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 6705.0,
+  "lifetime_p5": 4280.0,
+  "bequest_med": 4498.0
+ },
+ "US_STRESS|100M|union|150k|FIX": {
+  "ruin_alive_pct": 0.02,
+  "ruin_age_med": 89.0,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.02,
+  "lifetime_med": 6705.0,
+  "lifetime_p5": 4280.0,
+  "bequest_med": 199007.0
+ },
+ "US_STRESS|100M|union|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.31,
+  "lifetime_med": 8506.0,
+  "lifetime_p5": 5115.0,
+  "bequest_med": 184827.0
+ },
+ "US_STRESS|100M|union|150k|VPW": {
+  "ruin_alive_pct": 0.07,
+  "ruin_age_med": 100.8,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.11,
+  "lifetime_med": 11905.0,
+  "lifetime_p5": 7781.0,
+  "bequest_med": 136637.0
+ },
+ "US_STRESS|100M|union|200k|DEPOSIT": {
+  "ruin_alive_pct": 0.89,
+  "ruin_age_med": 103.7,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.82,
+  "lifetime_med": 8939.0,
+  "lifetime_p5": 5705.0,
+  "bequest_med": 2254.0
+ },
+ "US_STRESS|100M|union|200k|FIX": {
+  "ruin_alive_pct": 0.34,
+  "ruin_age_med": 85.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.34,
+  "lifetime_med": 8930.0,
+  "lifetime_p5": 5705.0,
+  "bequest_med": 174080.0
+ },
+ "US_STRESS|100M|union|200k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.06,
+  "lifetime_med": 11365.0,
+  "lifetime_p5": 6632.0,
+  "bequest_med": 156701.0
+ },
+ "US_STRESS|100M|union|200k|VPW": {
+  "ruin_alive_pct": 0.16,
+  "ruin_age_med": 100.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.21,
+  "lifetime_med": 15518.0,
+  "lifetime_p5": 9456.0,
+  "bequest_med": 105149.0
+ },
+ "US_STRESS|100M|zero|100k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4468.0,
+  "lifetime_p5": 2853.0,
+  "bequest_med": 5547.0
+ },
+ "US_STRESS|100M|zero|100k|FIX": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 4468.0,
+  "lifetime_p5": 2853.0,
+  "bequest_med": 217553.0
+ },
+ "US_STRESS|100M|zero|100k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 3.01,
+  "lifetime_med": 6042.0,
+  "lifetime_p5": 3462.0,
+  "bequest_med": 205837.0
+ },
+ "US_STRESS|100M|zero|100k|VPW": {
+  "ruin_alive_pct": 0.05,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.09,
+  "lifetime_med": 8905.0,
+  "lifetime_p5": 5683.0,
+  "bequest_med": 167735.0
+ },
+ "US_STRESS|100M|zero|150k|DEPOSIT": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.0,
+  "lifetime_med": 6702.0,
+  "lifetime_p5": 4280.0,
+  "bequest_med": 3307.0
+ },
+ "US_STRESS|100M|zero|150k|FIX": {
+  "ruin_alive_pct": 0.11,
+  "ruin_age_med": 88.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.11,
+  "lifetime_med": 6702.0,
+  "lifetime_p5": 4280.0,
+  "bequest_med": 192951.0
+ },
+ "US_STRESS|100M|zero|150k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.59,
+  "lifetime_med": 8932.0,
+  "lifetime_p5": 5015.0,
+  "bequest_med": 176524.0
+ },
+ "US_STRESS|100M|zero|150k|VPW": {
+  "ruin_alive_pct": 0.15,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.29,
+  "lifetime_med": 13092.0,
+  "lifetime_p5": 8112.0,
+  "bequest_med": 121811.0
+ },
+ "US_STRESS|100M|zero|200k|DEPOSIT": {
+  "ruin_alive_pct": 24.7,
+  "ruin_age_med": 93.6,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 24.42,
+  "lifetime_med": 8936.0,
+  "lifetime_p5": 5706.0,
+  "bequest_med": 1066.0
+ },
+ "US_STRESS|100M|zero|200k|FIX": {
+  "ruin_alive_pct": 0.68,
+  "ruin_age_med": 82.5,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.68,
+  "lifetime_med": 8917.0,
+  "lifetime_p5": 5698.0,
+  "bequest_med": 167719.0
+ },
+ "US_STRESS|100M|zero|200k|GK": {
+  "ruin_alive_pct": 0.0,
+  "ruin_age_med": null,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.32,
+  "lifetime_med": 11720.0,
+  "lifetime_p5": 6337.0,
+  "bequest_med": 148512.0
+ },
+ "US_STRESS|100M|zero|200k|VPW": {
+  "ruin_alive_pct": 0.33,
+  "ruin_age_med": 100.2,
+  "ruin_before65_pct": 0.0,
+  "floor_breach_pct": 0.44,
+  "lifetime_med": 16531.0,
+  "lifetime_p5": 9391.0,
+  "bequest_med": 90897.0
+ }
+}
