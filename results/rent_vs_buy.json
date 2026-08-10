@@ -1,0 +1,324 @@
+{
+ "breakeven": [
+  {
+   "r": 3.0,
+   "g": -1.0,
+   "c": 0.9,
+   "breakeven_yield": 4.9,
+   "price_to_annual_rent": 20.4
+  },
+  {
+   "r": 3.0,
+   "g": 0.0,
+   "c": 0.9,
+   "breakeven_yield": 3.9,
+   "price_to_annual_rent": 25.6
+  },
+  {
+   "r": 3.0,
+   "g": 1.0,
+   "c": 0.9,
+   "breakeven_yield": 2.9,
+   "price_to_annual_rent": 34.5
+  },
+  {
+   "r": 3.0,
+   "g": 2.0,
+   "c": 0.9,
+   "breakeven_yield": 1.9,
+   "price_to_annual_rent": 52.6
+  },
+  {
+   "r": 3.5,
+   "g": -1.0,
+   "c": 0.9,
+   "breakeven_yield": 5.4,
+   "price_to_annual_rent": 18.5
+  },
+  {
+   "r": 3.5,
+   "g": 0.0,
+   "c": 0.9,
+   "breakeven_yield": 4.4,
+   "price_to_annual_rent": 22.7
+  },
+  {
+   "r": 3.5,
+   "g": 1.0,
+   "c": 0.9,
+   "breakeven_yield": 3.4,
+   "price_to_annual_rent": 29.4
+  },
+  {
+   "r": 3.5,
+   "g": 2.0,
+   "c": 0.9,
+   "breakeven_yield": 2.4,
+   "price_to_annual_rent": 41.7
+  },
+  {
+   "r": 3.9,
+   "g": -1.0,
+   "c": 0.9,
+   "breakeven_yield": 5.8,
+   "price_to_annual_rent": 17.2
+  },
+  {
+   "r": 3.9,
+   "g": 0.0,
+   "c": 0.9,
+   "breakeven_yield": 4.8,
+   "price_to_annual_rent": 20.8
+  },
+  {
+   "r": 3.9,
+   "g": 1.0,
+   "c": 0.9,
+   "breakeven_yield": 3.8,
+   "price_to_annual_rent": 26.3
+  },
+  {
+   "r": 3.9,
+   "g": 2.0,
+   "c": 0.9,
+   "breakeven_yield": 2.8,
+   "price_to_annual_rent": 35.7
+  }
+ ],
+ "cases": [
+  {
+   "price_wan": 6000,
+   "rent_monthly": 60000,
+   "gross_yield": 1.2,
+   "breakeven_g": 3.2,
+   "annual_edge_to_rent_wan": 192
+  },
+  {
+   "price_wan": 4000,
+   "rent_monthly": 60000,
+   "gross_yield": 1.8,
+   "breakeven_g": 2.6,
+   "annual_edge_to_rent_wan": 104
+  },
+  {
+   "price_wan": 3000,
+   "rent_monthly": 60000,
+   "gross_yield": 2.4,
+   "breakeven_g": 2.0,
+   "annual_edge_to_rent_wan": 60
+  },
+  {
+   "price_wan": 2000,
+   "rent_monthly": 40000,
+   "gross_yield": 2.4,
+   "breakeven_g": 2.0,
+   "annual_edge_to_rent_wan": 40
+  },
+  {
+   "price_wan": 1200,
+   "rent_monthly": 40000,
+   "gross_yield": 4.0,
+   "breakeven_g": 0.4,
+   "annual_edge_to_rent_wan": 5
+  },
+  {
+   "price_wan": 1000,
+   "rent_monthly": 40000,
+   "gross_yield": 4.8,
+   "breakeven_g": -0.4,
+   "annual_edge_to_rent_wan": -4
+  }
+ ],
+ "yield_scan": [
+  {
+   "mode": "rent",
+   "ltv": 0.0,
+   "ruin_pct": 0.91,
+   "floor_breach_pct": 4.16,
+   "nh_lifetime_med": 8081,
+   "nh_lifetime_p5": 3575,
+   "housing_lifetime_med": 1928,
+   "net_end_med": 34309,
+   "start_wr": 3.6,
+   "floor_share": 43.3
+  },
+  {
+   "mode": "own",
+   "ltv": 0.0,
+   "ruin_pct": 7.67,
+   "floor_breach_pct": 50.33,
+   "nh_lifetime_med": 3900,
+   "nh_lifetime_p5": 988,
+   "housing_lifetime_med": 1157,
+   "net_end_med": 8836,
+   "start_wr": 8.93,
+   "floor_share": 36.6,
+   "yield": 1.5,
+   "house_wan": 3200
+  },
+  {
+   "mode": "own",
+   "ltv": 0.0,
+   "ruin_pct": 2.32,
+   "floor_breach_pct": 10.54,
+   "nh_lifetime_med": 5874,
+   "nh_lifetime_p5": 2016,
+   "housing_lifetime_med": 868,
+   "net_end_med": 13176,
+   "start_wr": 5.91,
+   "floor_share": 33.6,
+   "yield": 2.0,
+   "house_wan": 2400
+  },
+  {
+   "mode": "own",
+   "ltv": 0.0,
+   "ruin_pct": 1.41,
+   "floor_breach_pct": 4.36,
+   "nh_lifetime_med": 6751,
+   "nh_lifetime_p5": 2648,
+   "housing_lifetime_med": 694,
+   "net_end_med": 16691,
+   "start_wr": 4.85,
+   "floor_share": 31.7,
+   "yield": 2.5,
+   "house_wan": 1920
+  },
+  {
+   "mode": "own",
+   "ltv": 0.0,
+   "ruin_pct": 1.14,
+   "floor_breach_pct": 2.69,
+   "nh_lifetime_med": 7239,
+   "nh_lifetime_p5": 3068,
+   "housing_lifetime_med": 578,
+   "net_end_med": 19659,
+   "start_wr": 4.31,
+   "floor_share": 30.3,
+   "yield": 3.0,
+   "house_wan": 1600
+  },
+  {
+   "mode": "own",
+   "ltv": 0.0,
+   "ruin_pct": 0.99,
+   "floor_breach_pct": 1.93,
+   "nh_lifetime_med": 7549,
+   "nh_lifetime_p5": 3347,
+   "housing_lifetime_med": 496,
+   "net_end_med": 22045,
+   "start_wr": 3.98,
+   "floor_share": 29.3,
+   "yield": 3.5,
+   "house_wan": 1371
+  },
+  {
+   "mode": "own",
+   "ltv": 0.0,
+   "ruin_pct": 0.86,
+   "floor_breach_pct": 1.55,
+   "nh_lifetime_med": 7755,
+   "nh_lifetime_p5": 3561,
+   "housing_lifetime_med": 434,
+   "net_end_med": 24011,
+   "start_wr": 3.76,
+   "floor_share": 28.6,
+   "yield": 4.0,
+   "house_wan": 1200
+  },
+  {
+   "mode": "own",
+   "ltv": 0.0,
+   "ruin_pct": 0.71,
+   "floor_breach_pct": 1.16,
+   "nh_lifetime_med": 8025,
+   "nh_lifetime_p5": 3846,
+   "housing_lifetime_med": 347,
+   "net_end_med": 26740,
+   "start_wr": 3.48,
+   "floor_share": 27.5,
+   "yield": 5.0,
+   "house_wan": 960
+  },
+  {
+   "mode": "own",
+   "ltv": 0.0,
+   "ruin_pct": 0.62,
+   "floor_breach_pct": 0.95,
+   "nh_lifetime_med": 8186,
+   "nh_lifetime_p5": 4034,
+   "housing_lifetime_med": 289,
+   "net_end_med": 28920,
+   "start_wr": 3.31,
+   "floor_share": 26.7,
+   "yield": 6.0,
+   "house_wan": 800
+  }
+ ],
+ "mortgage": [
+  {
+   "mode": "own",
+   "ltv": 0.0,
+   "ruin_pct": 5.34,
+   "floor_breach_pct": 34.41,
+   "nh_lifetime_med": 4467,
+   "nh_lifetime_p5": 1204,
+   "housing_lifetime_med": 1084,
+   "net_end_med": 9832,
+   "start_wr": 7.95,
+   "floor_share": 35.8,
+   "label": "全現金"
+  },
+  {
+   "mode": "own",
+   "ltv": 0.8,
+   "ruin_pct": 15.52,
+   "floor_breach_pct": 94.68,
+   "nh_lifetime_med": 5160,
+   "nh_lifetime_p5": 816,
+   "housing_lifetime_med": 5574,
+   "net_end_med": 16369,
+   "start_wr": 4.8,
+   "floor_share": 51.7,
+   "label": "貸8成・機動(短率+1.5%)"
+  },
+  {
+   "mode": "own",
+   "ltv": 0.8,
+   "ruin_pct": 2.58,
+   "floor_breach_pct": 21.47,
+   "nh_lifetime_med": 6896,
+   "nh_lifetime_p5": 1983,
+   "housing_lifetime_med": 3184,
+   "net_end_med": 24585,
+   "start_wr": 4.8,
+   "floor_share": 51.7,
+   "label": "貸8成・固定2.2%（台灣買不到）"
+  },
+  {
+   "mode": "own",
+   "ltv": 0.8,
+   "ruin_pct": 5.91,
+   "floor_breach_pct": 46.16,
+   "nh_lifetime_med": 6167,
+   "nh_lifetime_p5": 1144,
+   "housing_lifetime_med": 4406,
+   "net_end_med": 22134,
+   "start_wr": 5.49,
+   "floor_share": 57.8,
+   "label": "貸8成・固定3.5%"
+  }
+ ],
+ "rent_base": {
+  "mode": "rent",
+  "ltv": 0.0,
+  "ruin_pct": 0.91,
+  "floor_breach_pct": 4.16,
+  "nh_lifetime_med": 8081,
+  "nh_lifetime_p5": 3575,
+  "housing_lifetime_med": 1928,
+  "net_end_med": 34309,
+  "start_wr": 3.6,
+  "floor_share": 43.3
+ }
+}
