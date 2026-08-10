@@ -1,4 +1,5 @@
 <title>1000 萬退休的三種人生：一對台灣夫妻的壓力測試</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 :root{
   --paper:#F6F6F2; --card:#FFFFFF; --ink:#22272E; --ink2:#5A6472; --line:#DDDDD5;
@@ -21,21 +22,22 @@
   --bar:#3A4654;
 }
 *{box-sizing:border-box}
+html{font-size:clamp(15px, 14px + .4vw, 17px); -webkit-text-size-adjust:100%;}
 body{background:var(--paper); color:var(--ink); margin:0;
   font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",-apple-system,"Segoe UI",sans-serif;
-  line-height:1.85; font-size:16.5px;}
+  line-height:1.85; font-size:1rem;}
 main{max-width:46rem; margin:0 auto; padding:2.8rem 1.25rem 5rem;}
 h1,h2,h3{font-family:"Noto Serif TC","Songti TC",Georgia,serif; line-height:1.35; text-wrap:balance;}
-h1{font-size:2.05rem; margin:.3rem 0 .5rem;}
+h1{font-size:clamp(1.58rem, 1.2rem + 1.7vw, 2.05rem); margin:.3rem 0 .5rem;}
 h2{font-size:1.38rem; margin:3rem 0 .8rem; padding-top:1.3rem; border-top:1px solid var(--line);}
 h3{font-size:1.04rem; margin:1.5rem 0 .4rem;}
 p{margin:.75rem 0;}
-.eyebrow{font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:700;}
+.eyebrow{font-size:.75rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:700;}
 .standfirst{font-size:1.12rem; color:var(--ink); font-family:"Noto Serif TC",Georgia,serif;}
-.meta{color:var(--ink2); font-size:.84rem;}
+.meta{color:var(--ink2); font-size:.86rem;}
 .profile{display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0;}
 .profile span{background:var(--card); border:1px solid var(--line); border-radius:999px;
-  padding:.28rem .85rem; font-size:.84rem; white-space:nowrap;}
+  padding:.28rem .85rem; font-size:.86rem; white-space:nowrap;}
 .profile b{color:var(--accent);}
 .tldr{counter-reset:t; display:grid; gap:.8rem; margin:1.4rem 0;}
 .tldr .item{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.9rem 1rem .9rem 3.1rem; position:relative; font-size:.97rem;}
@@ -44,18 +46,18 @@ p{margin:.75rem 0;}
 .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:.8rem; margin:1.2rem 0;}
 .card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.9rem 1rem;}
 .card h3{margin:.1rem 0 .35rem; font-size:1rem;}
-.card .tag{font-size:.7rem; font-weight:700; letter-spacing:.06em; color:var(--accent);}
-.card p{font-size:.88rem; margin:.3rem 0; color:var(--ink);}
-.card .like{font-size:.82rem; color:var(--ink2); font-style:italic;}
-.barrow{display:grid; grid-template-columns:7.5rem 1fr 3.4rem; align-items:center; gap:.6rem; margin:.35rem 0; font-size:.86rem;}
+.card .tag{font-size:.72rem; font-weight:700; letter-spacing:.06em; color:var(--accent);}
+.card p{font-size:.9rem; margin:.3rem 0; color:var(--ink);}
+.card .like{font-size:.85rem; color:var(--ink2); font-style:italic;}
+.barrow{display:grid; grid-template-columns:7.5rem 1fr 3.4rem; align-items:center; gap:.6rem; margin:.35rem 0; font-size:.88rem;}
 .bartrack{background:var(--bar); border-radius:3px; height:14px; position:relative; overflow:hidden;}
 .barfill{position:absolute; left:0; top:0; bottom:0; border-radius:3px;}
 .bar-ok{background:var(--ok);} .bar-warn{background:var(--warn);} .bar-ruin{background:var(--ruin);}
 .barlabel{text-align:right; font-variant-numeric:tabular-nums; font-weight:600;}
 .scen{font-family:"Noto Serif TC",Georgia,serif; font-weight:700; margin:1.3rem 0 .4rem; font-size:.95rem;}
 .tablewrap{overflow-x:auto; margin:1rem 0; border:1px solid var(--line); border-radius:6px; background:var(--card);}
-table{border-collapse:collapse; width:100%; font-size:.84rem; font-variant-numeric:tabular-nums;}
-th{font-size:.71rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink2);
+table{border-collapse:collapse; width:100%; font-size:.88rem; font-variant-numeric:tabular-nums;}
+th{font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink2);
   text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--line); white-space:nowrap;}
 td{padding:.5rem .7rem; border-bottom:1px solid var(--line); white-space:nowrap;}
 tr:last-child td{border-bottom:none;}
@@ -65,48 +67,60 @@ td.hi-warn{color:var(--warn); font-weight:600;}
 td.hi-ok{color:var(--ok); font-weight:600;}
 .life{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.95rem 1.15rem; margin:.9rem 0;}
 .life h3{margin:.1rem 0 .45rem;}
-.life p{font-size:.92rem; margin:.32rem 0;}
+.life p{font-size:.94rem; margin:.32rem 0;}
 figure{margin:1.4rem 0; background:#FFFFFF; border:1px solid var(--line); border-radius:6px; padding:.7rem;}
 figure img{max-width:100%; height:auto; display:block;}
-figcaption{font-size:.83rem; color:var(--ink2); padding:.55rem .3rem .1rem; line-height:1.65;}
+figcaption{font-size:.86rem; color:var(--ink2); padding:.55rem .3rem .1rem; line-height:1.65;}
 .qa{margin:1.15rem 0; border-left:3px solid var(--accent); padding:.1rem 0 .1rem 1rem;}
 .qa .q{font-weight:700; font-family:"Noto Serif TC",Georgia,serif;}
-.qa p{font-size:.94rem; margin:.35rem 0;}
+.qa p{font-size:.95rem; margin:.35rem 0;}
 blockquote{margin:1.6rem 0; padding:.95rem 1.15rem; background:var(--accent-soft); border-radius:6px; font-size:.98rem;}
 blockquote p{margin:0;}
-ul{padding-left:1.3rem;} li{margin:.35rem 0; font-size:.93rem;}
+ul{padding-left:1.3rem;} li{margin:.35rem 0; font-size:.94rem;}
 code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85em;
   background:var(--accent-soft); border-radius:3px; padding:.06em .3em;}
-.foot{margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line); font-size:.8rem; color:var(--ink2);}
+.foot{margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line); font-size:.83rem; color:var(--ink2);}
 
 .calc{background:var(--card); border:1px solid var(--line); border-radius:8px; padding:1.1rem 1.15rem; margin:1.2rem 0;}
 .calc h4{margin:.1rem 0 .7rem; font-family:"Noto Serif TC",Georgia,serif; font-size:1rem;}
 .calcgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:.7rem .9rem;}
 .field{display:flex; flex-direction:column; gap:.2rem;}
-.field label{font-size:.78rem; color:var(--ink2); letter-spacing:.02em;}
+.field label{font-size:.8rem; color:var(--ink2); letter-spacing:.02em;}
 .field input{font:inherit; font-size:.95rem; font-variant-numeric:tabular-nums;
   background:var(--paper); color:var(--ink); border:1px solid var(--line);
   border-radius:5px; padding:.42rem .6rem; width:100%;}
 .field input:focus-visible{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent);}
 .calcout{margin-top:1rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:.7rem;}
 .outbox{background:var(--paper); border:1px solid var(--line); border-radius:6px; padding:.7rem .85rem;}
-.outbox .lbl{font-size:.74rem; color:var(--ink2); letter-spacing:.04em;}
+.outbox .lbl{font-size:.77rem; color:var(--ink2); letter-spacing:.04em;}
 .outbox .val{font-size:1.32rem; font-weight:700; font-variant-numeric:tabular-nums; line-height:1.35;}
-.outbox .sub{font-size:.79rem; color:var(--ink2); line-height:1.5;}
+.outbox .sub{font-size:.82rem; color:var(--ink2); line-height:1.5;}
 .verdict{margin-top:.8rem; padding:.6rem .85rem; border-radius:6px; font-size:.9rem; font-weight:600;}
 .v-hold{background:var(--accent-soft); color:var(--accent);}
 .v-cut{background:var(--ruin-bg); color:var(--ruin);}
 .v-raise{background:var(--ok-bg); color:var(--ok);}
 .v-floor{background:var(--warn-bg); color:var(--warn);}
 .formula{background:var(--accent-soft); border-radius:6px; padding:.75rem .95rem; margin:.8rem 0;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.88rem; line-height:1.9;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.9rem; line-height:1.9;
   overflow-x:auto; white-space:nowrap;}
 .steps{counter-reset:s; list-style:none; padding-left:0;}
-.steps li{counter-increment:s; position:relative; padding-left:2rem; margin:.5rem 0; font-size:.93rem;}
+.steps li{counter-increment:s; position:relative; padding-left:2rem; margin:.5rem 0; font-size:.94rem;}
 .steps li::before{content:"步驟 " counter(s); position:absolute; left:0; top:.28rem;
-  font-size:.62rem; font-weight:700; letter-spacing:.03em; color:var(--accent);
+  font-size:.66rem; font-weight:700; letter-spacing:.03em; color:var(--accent);
   writing-mode:horizontal-tb; width:1.7rem;}
 .steps li b{font-variant-numeric:tabular-nums;}
+
+@media (max-width:640px){
+  main{padding:2rem 1rem 3.5rem;}
+  h2{margin-top:2.4rem;}
+  .tldr .item{padding:.8rem .85rem .8rem 2.6rem;}
+  .tldr .item::before{left:.85rem; top:.85rem; font-size:1.3rem;}
+  .barrow{grid-template-columns:5.6rem 1fr 2.9rem; gap:.45rem; font-size:.83rem;}
+  th,td{padding:.45rem .55rem;}
+  blockquote{padding:.8rem .9rem;}
+  .calc{padding:.9rem .85rem;}
+  figure{padding:.5rem;}
+}
 </style>
 <main>
 <div class="eyebrow">bysq 專題 · 真實資料模擬 · 2026-08</div>
