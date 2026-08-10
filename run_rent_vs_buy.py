@@ -63,12 +63,16 @@ def implied(price, monthly_rent, r=0.035, c=CARRY):
 
 def simulate(idx, panel, mode, wealth0, house_price, monthly_rent, nonhousing,
              death_h, death_w, ltv=0.0, mort_mode="float", mort_nom=0.022,
-             mort_spread=0.015, g_real=0.0):
+             mort_spread=0.015, g_real=0.0, rent_drift=0.0, buy_at_month=None):
     """mode: 'rent' | 'own'。兩邊的非住房消費目標相同 (nonhousing)。
 
     ltv>0 = 房貸（只付息；本金屬儲蓄，由遺產結清）。
     mort_mode='float' → 利率 = 抽樣短率 + 加碼（台灣是機動利率，這是實況）
     mort_mode='fixed' → 固定名目利率（台灣買不到，當對照組）
+    rent_drift    → 租金在 CPI 之上的年漂移（例如 0.01 = 每年實質 +1%）
+    buy_at_month  → mode='rent' 時：該月被迫用現金買房（房價同步套用
+                    rent_drift 的實質漂移——租金會漲的世界裡房價也在漲）；
+                    買不起的路徑繼續租，另計比例
     """
     P, Tn = idx.shape
     stock_r, bond_r, infl_m = panel["stock"][idx], panel["bond"][idx], panel["infl"][idx]
@@ -98,6 +102,8 @@ def simulate(idx, panel, mode, wealth0, house_price, monthly_rent, nonhousing,
     housing_paid = np.zeros(P)
     draw_nom = np.zeros(P)
     floor_ref = np.zeros(P)
+    owns = np.zeros(P, bool)       # buy_at_month 之後轉為屋主的路徑
+    bought_price_real = np.zeros(P)
 
     for t in range(Tn):
         y = t // 12
@@ -105,10 +111,24 @@ def simulate(idx, panel, mode, wealth0, house_price, monthly_rent, nonhousing,
         one = ((t < death_h) | (t < death_w)) & ~both
         alive = both | one
         nh_t = np.where(both, nonhousing, np.where(one, nonhousing * 0.8, 0.0))
+        drift = (1 + rent_drift) ** (t / 12.0)
+
+        # 被迫購屋事件（現金買，價格 = 房價 × 同步實質漂移）
+        if mode == "rent" and buy_at_month is not None and t == buy_at_month:
+            cost_real = house_price * drift
+            wealth = bal.sum(axis=1)
+            can = alive & (wealth / price[:, t] >= cost_real * 1.02)
+            frac_pay = np.where(can, cost_real * price[:, t] /
+                                np.maximum(wealth, 1e-9), 0.0)
+            bal *= (1.0 - frac_pay)[:, None]
+            owns = can
+            bought_price_real = np.where(can, cost_real, 0.0)
 
         # 住房那一欄（名目）
         if mode == "rent":
-            housing = monthly_rent * price[:, t]
+            housing = np.where(owns,
+                               CARRY * bought_price_real / 12.0 * price[:, t],
+                               monthly_rent * drift * price[:, t])
         else:
             if mort_mode == "float":
                 m_m = (1 + bill[:, t]) * (1 + mort_spread) ** (1 / 12) - 1
@@ -148,11 +168,17 @@ def simulate(idx, panel, mode, wealth0, house_price, monthly_rent, nonhousing,
         bal[:, 0] *= (1.0 + stock_r[:, t])
         bal[:, 1] *= (1.0 + bond_r[:, t])
 
-    house_end = house_price * (1 + g_real) ** HORIZON_Y - debt if mode == "own" else 0.0
+    if mode == "own":
+        house_end = house_price * (1 + g_real) ** HORIZON_Y - debt
+    else:
+        house_end = bought_price_real          # 被迫購屋者期末持有的房（g=0）
     net_end = bal.sum(axis=1) / price[:, -1] + house_end
     h0 = (monthly_rent if mode == "rent"
           else CARRY * house_price / 12 + debt * ((1 + mort_nom) ** (1 / 12) - 1))
     return dict(mode=mode, ltv=ltv,
+                could_not_buy_pct=round(100 * float(
+                    ((~owns) & (np.maximum(death_h, death_w) > buy_at_month)).mean()), 2)
+                if (mode == "rent" and buy_at_month is not None) else None,
                 ruin_pct=round(100 * float(ruined.mean()), 2),
                 floor_breach_pct=round(100 * float(floor_breach.mean()), 2),
                 nh_lifetime_med=round(float(np.median(lifetime_nh)) / 1e4),
