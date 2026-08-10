@@ -1,2 +1,2 @@
 __pycache__/
-results/run.log
+results/*.log
