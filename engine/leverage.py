@@ -126,23 +126,34 @@ def simulate_leverage(idx, panel, spec, cash_col="twd_cash", seed=0):
             rest = w_month - take_c
         else:
             rest = w_month
+        # v3 §2 orthogonal design: the fallback is the DRAWDOWN response,
+        # independent of whether a bucket exists. In good times (position at
+        # or near its high-water mark) unfunded spending is always borrowed;
+        # the fallback governs what happens when the bucket (if any) is dry
+        # AND the position is in drawdown. bucket=OFF x fallback is therefore
+        # a meaningful cell: no pre-funding, drawdown response only.
         need = rest > 1e-15
-        if spec.fallback == "F1" or spec.bucket_years == 0:
-            D += np.where(need, rest, 0.0)
-            funded_rest = rest
-        elif spec.fallback == "F2":
-            sell = np.minimum(rest, W)
+        in_dd = W < spec.alpha * peak          # t-1 info
+        fb = need & in_dd
+        good = need & ~in_dd
+        D += np.where(good, rest, 0.0)
+        funded_rest = np.where(good, rest, 0.0)
+        if spec.fallback == "F1":              # borrow anyway
+            D += np.where(fb, rest, 0.0)
+            funded_rest = np.where(fb, rest, funded_rest)
+        elif spec.fallback == "F2":            # sell at the low
+            sell = np.where(fb, np.minimum(rest, W), 0.0)
             W -= sell
-            shortD = rest - sell            # position empty -> borrow remainder
+            shortD = np.where(fb, rest - sell, 0.0)
             D += np.where(shortD > 1e-15, shortD, 0.0)
-            funded_rest = rest
-        else:  # F3: GK-style capital preservation — cut real spending 10%,
-            # at most once per rolling 12 months; borrow the reduced amount
-            do_cut = need & (t - last_cut >= 12)
+            funded_rest = np.where(fb, rest, funded_rest)
+        else:                                  # F3: cut 10% (once/12m), borrow rest
+            do_cut = fb & (t - last_cut >= 12)
             last_cut = np.where(do_cut, t, last_cut)
             spend_nom = np.where(do_cut, spend_nom * (1 - spec.cut_frac), spend_nom)
-            funded_rest = np.where(do_cut, rest * (1 - spec.cut_frac), rest)
-            D += np.where(need, funded_rest, 0.0)
+            fr = np.where(fb, rest * np.where(do_cut, 1 - spec.cut_frac, 1.0), 0.0)
+            D += fr
+            funded_rest = funded_rest + fr
         spent = (take_c if spec.bucket_years > 0 else 0.0) + funded_rest
         annual_real_spend[:, y] += np.where(alive, spent / price[:, t], 0.0)
 
@@ -205,6 +216,7 @@ def simulate_leverage(idx, panel, spec, cash_col="twd_cash", seed=0):
         peak_ltv=peak_ltv,
         cum_interest_real=cum_interest,
         total_real_spend=annual_real_spend.sum(axis=1),
+        annual_real_spend=annual_real_spend,
         spend_fail=(c >= 3),
         nw_mdd=networth_path_min - 1.0,
         stock_mdd=stock_mdd,

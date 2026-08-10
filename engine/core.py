@@ -142,10 +142,28 @@ class GuytonKlinger:
       year the withdrawal is taken from bonds first.
     """
     def __init__(self, rate, cap=0.06, cut=0.10, raise_=0.10,
-                 upper=1.2, lower=0.8, cpr_off_years=15):
+                 upper=1.2, lower=0.8, cpr_off_years=15, floor_ratio=0.0):
         self.rate, self.cap, self.cut, self.raise_ = rate, cap, cut, raise_
         self.upper, self.lower, self.cpr_off_years = upper, lower, cpr_off_years
-        self.name = f"GK{rate*100:g}"
+        self.floor_ratio = floor_ratio   # uncuttable share of initial spending
+        self.name = f"GK{rate*100:g}" + (f"-fl{int(floor_ratio*100)}" if floor_ratio else "")
+
+
+class VPW:
+    """W4 amortization: each year spend = wealth x annuity factor over the
+    remaining horizon at an assumed real return. Two parameters, both from
+    an identity rather than a backtest fit."""
+    def __init__(self, expected_real=0.03):
+        self.expected_real = expected_real
+        self.rate = None
+        self.name = f"VPW{expected_real*100:g}"
+
+
+class RMD:
+    """W5: spend = wealth / remaining years. Zero parameters."""
+    def __init__(self):
+        self.rate = None
+        self.name = "RMD"
 
 
 class VanguardDynamic:
@@ -195,8 +213,15 @@ def simulate(idx, panel, alloc, rule, cash_col="bill"):
                         np.full(P, 1.0 - alloc.stock_w),
                         np.zeros(P)], axis=1)
 
-    spend_nom = np.full(P, rule.rate)       # this year's nominal spending
-    initial_rate = rule.rate
+    if isinstance(rule, VPW):
+        r_e = rule.expected_real
+        first = r_e / (1 - (1 + r_e) ** -years)
+    elif isinstance(rule, RMD):
+        first = 1.0 / years
+    else:
+        first = rule.rate
+    spend_nom = np.full(P, first)           # this year's nominal spending
+    initial_rate = first
     alive = np.ones(P, bool)
     annual_real_spend = np.zeros((P, years))
     prev_year_port_ret_neg = np.zeros(P, bool)
@@ -223,6 +248,19 @@ def simulate(idx, panel, alloc, rule, cash_col="bill"):
                         spend_nom = np.where(hit, spend_nom * (1 - rule.cut), spend_nom)
                     low = (spend_nom / np.maximum(wealth, 1e-12)) < rule.lower * initial_rate
                     spend_nom = np.where(low & (wealth > 0), spend_nom * (1 + rule.raise_), spend_nom)
+                    if rule.floor_ratio > 0:
+                        # the uncuttable share of initial REAL spending: no rule
+                        # may push spending below it (v3 §5)
+                        floor_nom = rule.floor_ratio * rule.rate * price[:, t]
+                        spend_nom = np.maximum(spend_nom, floor_nom)
+                elif isinstance(rule, VPW):
+                    n_left = years - y
+                    r_e = rule.expected_real
+                    f = r_e / (1 - (1 + r_e) ** -n_left) if n_left > 1 else 1.0
+                    spend_nom = wealth * f
+                elif isinstance(rule, RMD):
+                    n_left = years - y
+                    spend_nom = wealth / max(n_left, 1)
                 elif isinstance(rule, VanguardDynamic):
                     tgt = rule.rate * wealth
                     hi = spend_nom * (1 + rule.ceiling)
@@ -324,10 +362,27 @@ def simulate(idx, panel, alloc, rule, cash_col="bill"):
     )
 
 
-def ce_spending(annual_real_spend, gamma, floor_frac=0.01):
-    """CRRA certainty-equivalent annual real spending across paths+years."""
-    s1 = np.maximum(annual_real_spend[:, 0:1], 1e-12)
-    s = np.maximum(annual_real_spend, floor_frac * s1)
+def spend_fail_abs(annual_real_spend, floor_abs, min_years=3):
+    """v3 §1 scoring fix: failure = real spending below an ABSOLUTE floor
+    (units of initial wealth, inflation-adjusted by construction) for
+    >= min_years consecutive years. Same ruler for every strategy and
+    every starting rate — the old 70%-of-own-initial denominator let low
+    starting rates lower their own bar."""
+    P, years = annual_real_spend.shape
+    below = annual_real_spend < floor_abs
+    c = np.zeros(P)
+    run = np.zeros(P)
+    for yy in range(years):
+        run = np.where(below[:, yy], run + 1, 0)
+        c = np.maximum(c, run)
+    return c >= min_years
+
+
+def ce_spending(annual_real_spend, gamma, floor_abs=0.0005):
+    """CRRA certainty-equivalent annual real spending across paths+years.
+    Ruin years are floored at an ABSOLUTE 0.05% of initial wealth (v3: no
+    strategy-relative bars anywhere in the scoring)."""
+    s = np.maximum(annual_real_spend, floor_abs)
     if gamma == 1:
         u = np.log(s)
         return float(np.exp(u.mean()))
