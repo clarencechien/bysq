@@ -349,3 +349,22 @@ Path C 質借、其餘全同：歷史匯率 vs 凍結匯率＝強制事件 4.87%
 *v2 重現:`python tests/test_leverage.py && python run_v2.py && python run_v2_us_stress.py`*
 *v3 重現:`python run_v3.py`*
 *引擎與資料版本見 git log;結果 CSV 在 `results/`;規格與對照見 `docs/`。*
+
+---
+
+# 第四部（v4）：補齊候選集，把「活多久」放進來
+
+完整內容在 **`docs/REPORT-v4.md`**（規格 `docs/handoff-v4.md`、對照 `docs/v4-spec-vs-results.md`、輸出 `results/v4_*.csv`）。一句話摘要：
+
+- **§0**：v3 的 VPW/RMD「破產 22–25%」全是末年花盡假象，改記帳後為 0%，排序不變；勞退月領改為定期給付（非終身），勞保歸零情境下舊模型把破產率低估 3–5 倍。
+- **§1 地板＋上檔**：**不支配動態規則。** 65 歲、死亡率、地板補足規則下地板 0.7 的生前破產率 GK 0.4%、VPW 0.9%（v3 的「≥0.7 失效」是固定 50 年假象）；債券階梯 3.4%、名目年金 1.4–1.8% 反而更差，只有 CPI 連動年金（台灣沒有）到 0.2%。吃掉地板的是通膨不是保險公司；真正的地板是勞保。
+- **§2 死亡率**：65 歲退休者固定 50 年把風險高估 5–7 倍（FIX4 破產 17.6% → 2.6%）；40 歲 FIRE 者 15%。VPW > GK > FIX 在每個年齡不翻；60/40 vs 100/0 隨 longevity_shift 翻轉（不穩健）。
+- **§3**：V-yale 0.7 與 W7 成功機率護欄都拿到 GK 的平滑並保住 VPW 的總量——**GK 失去最後的存在理由**。生命表驅動的 TW-RMD 在死亡率尺下是生前 CE 最高的規則（buffer 至少 +10 年），在固定 50 年尺下卻「失敗」——尺選錯會判死最合理的規則。
+- **§4 JST 16 國**：「股票越多越安全」不穩健（池化樣本下 80/20 尾端最佳）；VPW3 > GK 在每個樣本成立；池化下 30 年 4% 破產 21%、50 年連 2% 都有 12.7%；唯一穩健改變尾端的是年金地板。
+- **§5 累積期**：一路保守不買到更好的尾巴；只有最後 10 年 bond tent 在 ≤30 年累積下有效；Coast FIRE 要用 1–3% 實質成長畫線，不是 5%。
+- **§6 長照**：桶在「衝擊落在崩盤中」也沒有價值，正式退場；1000 萬家庭遇 120 萬 × 5–8 年長照任何策略破產 8–56%（VPW 最脆弱），5000 萬家庭 <1%。
+- **§7 Return stacking**：五五配的全部優勢＝趨勢溢酬；翻轉點（折扣 0.25 + 利差 0.5%）落在可投資範圍內 → 不穩健；RSSB 在每個通膨型壓力窗放大損失。
+- **§9**：費用 0.7%/年 ≈ 提領率 +0.5pp；棄守把跌破率推高 1.5–2 倍、100/0 傷最重；微笑曲線只在轉折晚（80 歲）時對固定提領有利；樣本延長到 2026-07 全體變好、無排序翻轉。
+- **§10**：台灣引擎向美國拉齊後質借的強制事件 4.9% → 14.6%（報酬偏誤是主角）；死亡率回套改寫「4% 不能外推到 50 年」為「不能外推到 40 歲退休」。
+
+*v4 重現：`python data/build_lifetable.py && python data/build_jst.py && python data/build_trend.py && python tests/test_v4.py && python run_v4_v3rerun.py && python run_v4_lr.py && python run_v4_floor.py && python run_v4_mortality.py && python run_v4_smooth.py && python run_v4_jst.py && python run_v4_accum.py && python run_v4_ltc.py && python run_v4_stack.py && python run_v4_realism.py && python run_v4_bias.py`*
