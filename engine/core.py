@@ -58,12 +58,16 @@ def load_panel(which):
     return out
 
 
-def restrict(panel, first_date=None):
-    """Slice panel to rows >= first_date (and rows where bill is finite)."""
+def restrict(panel, first_date=None, last_date=None):
+    """Slice panel to rows first_date <= date <= last_date.
+    v4 §9.4: v1-v3 results used last_date='2023-07'; the rebuilt panels run
+    to 2026-07, so pass last_date explicitly to reproduce the older tables."""
     d = np.array(panel["dates"])
     mask = np.ones(len(d), bool)
     if first_date:
         mask &= d >= first_date
+    if last_date:
+        mask &= d <= last_date
     keys = [k for k in panel if k not in ("dates",)]
     out = {k: panel[k][mask] for k in keys}
     out["dates"] = list(d[mask])
@@ -152,11 +156,63 @@ class GuytonKlinger:
 class VPW:
     """W4 amortization: each year spend = wealth x annuity factor over the
     remaining horizon at an assumed real return. Two parameters, both from
-    an identity rather than a backtest fit."""
-    def __init__(self, expected_real=0.03):
+    an identity rather than a backtest fit.
+
+    v4 additions (all default off):
+      horizon     planning years for the annuity factor (default = sim years).
+                  Once y >= horizon the factor is 1.0: the rule spends the
+                  whole balance (the 'fixed end-point' cliff of v4 §3.3).
+      extensions  list of (trigger_year, new_horizon): when the path reaches
+                  trigger_year still alive, the planning horizon jumps to
+                  new_horizon (v4 §3.3 'plan to 100, extend to 110 at 90').
+      smooth      None | ('cap', up, down): annual REAL change clamped to
+                  [-down, +up] vs last year's real spending (Vanguard-style)
+                  | ('yale', alpha): spend = alpha x last real + (1-alpha) x VPW
+      floor_abs   real spending floor in units of W0 (V-floor; only meaningful
+                  when an external floor exists, v4 §3.1) — spending is topped
+                  up to it while wealth lasts.
+      life_table  (qx array indexed by age, retire_age, buffer): Taiwan RMD
+                  (v4 §3.2): horizon each year = remaining life expectancy at
+                  the current age from the table + buffer, instead of a fixed
+                  end-point. qx must be the population table; the rule reads
+                  only e_x, which is deterministic (no lookahead issue)."""
+    def __init__(self, expected_real=0.03, horizon=None, extensions=(),
+                 smooth=None, floor_abs=0.0, life_table=None, cape_rate=None):
         self.expected_real = expected_real
+        self.horizon = horizon
+        self.extensions = list(extensions)
+        self.smooth = smooth
+        self.floor_abs = floor_abs
+        self.life_table = life_table
+        self.cape_rate = cape_rate      # True: expected_real = clip(1/CAPE at t-1, 1%, 8%)
         self.rate = None
-        self.name = f"VPW{expected_real*100:g}"
+        tag = f"VPW{expected_real*100:g}" if not cape_rate else "VPWcape"
+        if life_table is not None:
+            tag = f"TWRMD{expected_real*100:g}+{life_table[2]}"
+        if horizon:
+            tag += f"h{horizon}"
+        if extensions:
+            tag += "x" + "/".join(f"{a}-{b}" for a, b in extensions)
+        if smooth:
+            tag += "-" + (f"cap{smooth[1]*100:g}/{smooth[2]*100:g}" if smooth[0] == "cap"
+                          else f"yale{smooth[1]:g}")
+        if floor_abs:
+            tag += f"-fl{floor_abs*100:g}"
+        self.name = tag
+
+    def years_left(self, y, sim_years):
+        """Planning years remaining at the START of year y (info: age only)."""
+        if self.life_table is not None:
+            qx, retire_age, buffer = self.life_table
+            age = retire_age + y
+            surv = np.cumprod(1 - qx[age:])
+            ex = surv.sum() + 0.5
+            return max(int(round(ex + buffer)), 1)
+        h = self.horizon or sim_years
+        for trig, new_h in self.extensions:
+            if y >= trig:
+                h = max(h, new_h)
+        return max(h - y, 1)
 
 
 class RMD:
@@ -164,6 +220,92 @@ class RMD:
     def __init__(self):
         self.rate = None
         self.name = "RMD"
+
+
+class FundedRatio:
+    """W6 (v4 §3.4): fixed-real spending with a funded-ratio guardrail.
+    funded_ratio = wealth / PV(remaining real spending at `discount`);
+    < lower -> cut 10%, > upper -> raise 10%, at most once a year."""
+    def __init__(self, rate, discount=0.02, lower=0.8, upper=1.2, cut=0.10, raise_=0.10):
+        self.rate, self.discount = rate, discount
+        self.lower, self.upper, self.cut, self.raise_ = lower, upper, cut, raise_
+        self.name = f"W6-FR{rate*100:g}"
+
+
+class RiskGuardrail:
+    """W7 (v4 §3.4): probability-of-success guardrail (the US-practitioner
+    successor to GK). Each year estimate P(portfolio funds the current real
+    spending for the remaining years) under FIXED assumed real drift mu and
+    vol sigma via the Milevsky-Robinson (2005) reciprocal-Gamma
+    approximation of the stochastic present value; cut 10% when below p_cut,
+    raise 10% when above p_raise. Uses no sampled returns at all."""
+    def __init__(self, rate, mu=0.04, sigma=0.12, p_cut=0.70, p_raise=0.95,
+                 cut=0.10, raise_=0.10):
+        self.rate, self.mu, self.sigma = rate, mu, sigma
+        self.p_cut, self.p_raise, self.cut, self.raise_ = p_cut, p_raise, cut, raise_
+        self.name = f"W7-PoS{rate*100:g}"
+
+    def p_success(self, wr, n_left):
+        """P(SPV of n_left years of 1/yr real spending < 1/wr).
+        Milevsky-Robinson: SPV ~ reciprocal Gamma(alpha, beta) with
+        alpha = (2 mu + 4 lambda)/(sigma^2 + lambda) - 1, beta = (sigma^2 + lambda)/2,
+        lambda = 1/n_left (finite-horizon correction via mortality-like hazard)."""
+        from math import lgamma
+        lam = 1.0 / max(n_left, 1)
+        mu, s2 = self.mu, self.sigma ** 2
+        alpha = (2 * mu + 4 * lam) / (s2 + lam) - 1.0
+        beta = (s2 + lam) / 2.0
+        if alpha <= 0:
+            return np.zeros_like(wr)
+        # P(SPV < 1/wr) = P(1/SPV > wr) = 1 - GammaCDF(wr; alpha, scale=beta)
+        # -> regularized lower incomplete gamma via series/continued fraction
+        x = np.asarray(wr, float) / beta
+        return 1.0 - _gammainc(alpha, x)
+
+
+def _gammainc(a, x):
+    """Regularized lower incomplete gamma P(a, x), vectorized in x
+    (Numerical Recipes series + Lentz continued fraction)."""
+    from math import lgamma
+    x = np.asarray(x, float)
+    out = np.zeros_like(x)
+    gln = lgamma(a)
+    ser = x < a + 1.0
+    # series
+    xs = x[ser]
+    if xs.size:
+        ap = a
+        s = np.full_like(xs, 1.0 / a)
+        d = np.full_like(xs, 1.0 / a)
+        for _ in range(500):
+            ap += 1.0
+            d = d * xs / ap
+            s = s + d
+            if np.all(np.abs(d) < np.abs(s) * 1e-12):
+                break
+        out[ser] = s * np.exp(-xs + a * np.log(np.maximum(xs, 1e-300)) - gln)
+    # continued fraction
+    xc = x[~ser]
+    if xc.size:
+        tiny = 1e-300
+        b = xc + 1.0 - a
+        c = np.full_like(xc, 1.0 / tiny)
+        d = 1.0 / b
+        h = d.copy()
+        for i in range(1, 500):
+            an = -i * (i - a)
+            b = b + 2.0
+            d = an * d + b
+            d = np.where(np.abs(d) < tiny, tiny, d)
+            c = b + an / c
+            c = np.where(np.abs(c) < tiny, tiny, c)
+            d = 1.0 / d
+            dl = d * c
+            h = h * dl
+            if np.all(np.abs(dl - 1.0) < 1e-12):
+                break
+        out[~ser] = 1.0 - np.exp(-xc + a * np.log(np.maximum(xc, 1e-300)) - gln) * h
+    return np.clip(out, 0.0, 1.0)
 
 
 class VanguardDynamic:
@@ -177,20 +319,33 @@ class VanguardDynamic:
 
 # --------------------------------------------------------- simulator -------
 
-def simulate(idx, panel, alloc, rule, cash_col="bill"):
+def simulate(idx, panel, alloc, rule, cash_col="bill", w0=1.0, fee=0.0,
+             extra_spend=None):
     """Vectorized across paths. Returns per-path metric dict.
 
     idx: (P, T) row indices into panel arrays. T = years*12.
-    Wealth starts at 1.0. Withdrawals happen at the start of each month
-    (annual amount / 12). Annual decisions at month t use balances after
-    returns through t-1 and the CPI level through t-1.
+    Wealth starts at w0 (scalar or per-path array; v4 §5 hands the whole
+    accumulation-phase terminal distribution in here). Spending rules that
+    take a `rate` interpret it as a fraction of the REFERENCE wealth 1.0,
+    i.e. an absolute real spending target, so per-path w0 != 1 changes the
+    effective withdrawal rate path by path. Withdrawals happen at the start
+    of each month (annual amount / 12). Annual decisions at month t use
+    balances after returns through t-1 and the CPI level through t-1.
+    fee: annual expense/tax drag subtracted from every asset's return
+    (v4 §9.2), applied monthly as fee/12.
+    extra_spend: optional (P, years) matrix of ADDITIONAL real annual
+    spending (units of W0) forced on top of the rule — v4 §6 long-term-care
+    and one-off shocks. It is withdrawn monthly (amount/12) and counted in
+    annual_real_spend; the rule itself never sees it (a shock is not a
+    decision).
     """
     P, T = idx.shape
     years = T // 12
-    stock_r = panel["stock"][idx]           # (P, T)
-    bond_r = panel["bond"][idx]
-    cash_r = panel[cash_col][idx]
+    stock_r = panel["stock"][idx] - fee / 12.0          # (P, T)
+    bond_r = panel["bond"][idx] - fee / 12.0
+    cash_r = panel[cash_col][idx] - fee / 12.0
     infl_m = panel["infl"][idx]
+    w0 = np.broadcast_to(np.asarray(w0, float), (P,)).copy()
 
     # price level at the START of month t (before month-t inflation accrues)
     price = np.ones((P, T))
@@ -202,26 +357,36 @@ def simulate(idx, panel, alloc, rule, cash_col="bill"):
     is_bucket = isinstance(alloc, BucketAlloc)
     if is_bucket:
         target_cash_years = alloc.years
-        w0 = min(rule.rate * target_cash_years, 0.5)
-        bal = np.stack([np.full(P, 1.0 - w0),          # stock
+        cw = min((rule.rate or 0.04) * target_cash_years, 0.5)
+        bal = np.stack([w0 * (1.0 - cw),                # stock
                         np.zeros(P),                    # bond unused
-                        np.full(P, w0)], axis=1)        # cash
+                        w0 * cw], axis=1)               # cash
         stock_index = np.ones(P)
         stock_hwm = np.ones(P)
     else:
-        bal = np.stack([np.full(P, alloc.stock_w),
-                        np.full(P, 1.0 - alloc.stock_w),
+        bal = np.stack([w0 * alloc.stock_w,
+                        w0 * (1.0 - alloc.stock_w),
                         np.zeros(P)], axis=1)
 
     if isinstance(rule, VPW):
         r_e = rule.expected_real
-        first = r_e / (1 - (1 + r_e) ** -years)
+        if rule.cape_rate:
+            cape_m = panel["cape"][idx]
+            r_e = np.clip(1.0 / cape_m[:, 0], 0.01, 0.08)
+        n0 = rule.years_left(0, years)
+        f0 = r_e / (1 - (1 + r_e) ** -n0) if n0 > 1 else 1.0
+        first = w0 * f0
+        if rule.floor_abs:
+            first = np.maximum(first, rule.floor_abs)
     elif isinstance(rule, RMD):
-        first = 1.0 / years
+        first = w0 / years
+    elif isinstance(rule, (FundedRatio, RiskGuardrail)):
+        first = np.full(P, rule.rate)
     else:
-        first = rule.rate
-    spend_nom = np.full(P, first)           # this year's nominal spending
-    initial_rate = first
+        first = np.full(P, rule.rate)
+    spend_nom = np.array(first, float) * np.ones(P)   # this year's nominal spending
+    initial_rate = spend_nom / w0           # per-path initial withdrawal rate
+    last_real_spend = spend_nom.copy()      # for VPW smoothing layers
     alive = np.ones(P, bool)
     annual_real_spend = np.zeros((P, years))
     prev_year_port_ret_neg = np.zeros(P, bool)
@@ -254,10 +419,48 @@ def simulate(idx, panel, alloc, rule, cash_col="bill"):
                         floor_nom = rule.floor_ratio * rule.rate * price[:, t]
                         spend_nom = np.maximum(spend_nom, floor_nom)
                 elif isinstance(rule, VPW):
-                    n_left = years - y
+                    n_left = rule.years_left(y, years)
                     r_e = rule.expected_real
+                    if rule.cape_rate:
+                        r_e = np.clip(1.0 / cape_m[:, t - 1], 0.01, 0.08)
                     f = r_e / (1 - (1 + r_e) ** -n_left) if n_left > 1 else 1.0
-                    spend_nom = wealth * f
+                    target_real = wealth * f / price[:, t]
+                    if rule.smooth is not None:
+                        if rule.smooth[0] == "cap":
+                            up, down = rule.smooth[1], rule.smooth[2]
+                            target_real = np.clip(target_real,
+                                                  last_real_spend * (1 - down),
+                                                  last_real_spend * (1 + up))
+                        elif rule.smooth[0] == "yale":
+                            a = rule.smooth[1]
+                            target_real = a * last_real_spend + (1 - a) * target_real
+                        # smoothing can never ask for more than the balance
+                        target_real = np.minimum(target_real, wealth / price[:, t])
+                    if rule.floor_abs:
+                        target_real = np.maximum(target_real, rule.floor_abs)
+                    spend_nom = target_real * price[:, t]
+                elif isinstance(rule, FundedRatio):
+                    # W6: funded ratio = wealth / PV(remaining real spending
+                    # at the rule's discount rate); cut/raise 10% outside band
+                    n_left = years - y
+                    r_d = rule.discount
+                    pv_f = (1 - (1 + r_d) ** -n_left) / r_d if r_d > 0 else n_left
+                    spend_nom = spend_nom * (1.0 + yr_infl)             # CPI-adjust
+                    fr = wealth / np.maximum(spend_nom * pv_f, 1e-12)
+                    spend_nom = np.where(fr < rule.lower, spend_nom * (1 - rule.cut), spend_nom)
+                    spend_nom = np.where(fr > rule.upper, spend_nom * (1 + rule.raise_), spend_nom)
+                elif isinstance(rule, RiskGuardrail):
+                    # W7: probability-of-success guardrail. The success
+                    # probability is a closed-form lognormal/Gamma approx
+                    # (Milevsky-Robinson 2005 stochastic present value) with
+                    # FIXED assumed real drift/vol — it never reads the
+                    # sampled returns, so it trivially passes no-lookahead.
+                    n_left = years - y
+                    spend_nom = spend_nom * (1.0 + yr_infl)
+                    wr = spend_nom / np.maximum(wealth, 1e-12)
+                    p_ok = rule.p_success(wr, n_left)
+                    spend_nom = np.where(p_ok < rule.p_cut, spend_nom * (1 - rule.cut), spend_nom)
+                    spend_nom = np.where(p_ok > rule.p_raise, spend_nom * (1 + rule.raise_), spend_nom)
                 elif isinstance(rule, RMD):
                     n_left = years - y
                     spend_nom = wealth / max(n_left, 1)
@@ -285,6 +488,8 @@ def simulate(idx, panel, alloc, rule, cash_col="bill"):
 
         # ---- start-of-month withdrawal ----
         w_month = np.where(alive, spend_nom / 12.0, 0.0)
+        if extra_spend is not None:
+            w_month = w_month + np.where(alive, extra_spend[:, y] * price[:, t] / 12.0, 0.0)
         if is_bucket:
             dd = stock_index / np.maximum(stock_hwm, 1e-12)
             from_cash = (dd < alloc.spend_thresh) & (bal[:, 2] > 0)
@@ -321,6 +526,8 @@ def simulate(idx, panel, alloc, rule, cash_col="bill"):
         ruin_year = np.where(newly_ruined & (ruin_year < 0), y, ruin_year)
         alive = alive & ~newly_ruined
         annual_real_spend[:, y] += got / price[:, t]
+        if t % 12 == 11:
+            last_real_spend = annual_real_spend[:, y]
 
         # ---- apply month-t returns ----
         bal[:, 0] *= (1.0 + stock_r[:, t])
@@ -351,9 +558,14 @@ def simulate(idx, panel, alloc, rule, cash_col="bill"):
     for yy in range(years):
         run = np.where(below70[:, yy], run + 1, 0)
         c = np.maximum(c, run)
+    # v4 §0.1: 'ruined' = assets exhausted with MORE than one year of the plan
+    # left. Exhaustion inside the final plan year is 'planned_depletion'
+    # (amortizing rules spend the whole balance in year N by design).
     return dict(
         total_real_spend=annual_real_spend.sum(axis=1),
-        ruined=(ruin_year >= 0),
+        ruined=(ruin_year >= 0) & (ruin_year < years - 1),
+        planned_depletion=(ruin_year == years - 1),
+        exhausted=(ruin_year >= 0),
         ruin_year=ruin_year,
         spend_fail=(c >= 3),
         yrs_below80=(rel < 0.80).sum(axis=1),

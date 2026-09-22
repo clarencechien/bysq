@@ -54,8 +54,10 @@ def simulate_leverage(idx, panel, spec, cash_col="twd_cash", seed=0):
     stock_r = panel["stock"][idx]
     cash_r = panel[cash_col][idx]
     infl_m = panel["infl"][idx]
-    if spec.borrow_mode == "path_b":
+    if spec.borrow_mode in ("path_b", "path_c_var"):
         # bill total-return series back to an annualized rate + spread
+        # (path_c_var, v4 §10.1: Path C mechanics — line review, 77% kill —
+        # but a market-linked borrowing cost)
         borrow_m = (1.0 + panel["bill"][idx]) * (1.0 + spec.borrow_spread) ** (1 / 12) - 1.0
     else:
         borrow_m = np.full((P, T), (1.0 + spec.borrow_const) ** (1 / 12) - 1.0)
