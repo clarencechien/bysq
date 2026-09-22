@@ -1,0 +1,390 @@
+<title>四十年後你還在嗎</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{
+  --paper:#F6F6F2; --card:#FFFFFF; --ink:#22272E; --ink2:#5A6472; --line:#DDDDD5;
+  --accent:#3D5A80; --accent-soft:#E7EDF4;
+  --ruin:#B0433C; --ruin-bg:#F6E7E5; --warn:#8A6114; --warn-bg:#F5EDDA; --ok:#3E7A52; --ok-bg:#E5F0E8;
+  --bar:#C9D5E2;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#15181D; --card:#1D2229; --ink:#D9DDE2; --ink2:#98A2AE; --line:#333A43;
+    --accent:#92B4D7; --accent-soft:#243140;
+    --ruin:#E08B84; --ruin-bg:#3A2523; --warn:#D8B36A; --warn-bg:#38301C; --ok:#8FC4A2; --ok-bg:#20321F;
+    --bar:#3A4654;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15181D; --card:#1D2229; --ink:#D9DDE2; --ink2:#98A2AE; --line:#333A43;
+  --accent:#92B4D7; --accent-soft:#243140;
+  --ruin:#E08B84; --ruin-bg:#3A2523; --warn:#D8B36A; --warn-bg:#38301C; --ok:#8FC4A2; --ok-bg:#20321F;
+  --bar:#3A4654;
+}
+*{box-sizing:border-box}
+html{font-size:clamp(15px, 14px + .4vw, 17px); -webkit-text-size-adjust:100%;}
+body{background:var(--paper); color:var(--ink); margin:0;
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",-apple-system,"Segoe UI",sans-serif;
+  line-height:1.85; font-size:1rem;}
+main{max-width:46rem; margin:0 auto; padding:2.8rem 1.25rem 5rem;}
+h1,h2,h3{font-family:"Noto Serif TC","Songti TC",Georgia,serif; line-height:1.35; text-wrap:balance;}
+h1{font-size:clamp(1.58rem, 1.2rem + 1.7vw, 2.05rem); margin:.3rem 0 .5rem;}
+h2{font-size:1.38rem; margin:3rem 0 .8rem; padding-top:1.3rem; border-top:1px solid var(--line);}
+h3{font-size:1.04rem; margin:1.5rem 0 .4rem;}
+p{margin:.75rem 0;}
+.eyebrow{font-size:.75rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:700;}
+.standfirst{font-size:1.12rem; color:var(--ink); font-family:"Noto Serif TC",Georgia,serif;}
+.meta{color:var(--ink2); font-size:.86rem;}
+.profile{display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0;}
+.profile span{background:var(--card); border:1px solid var(--line); border-radius:999px;
+  padding:.28rem .85rem; font-size:.86rem; white-space:nowrap;}
+.profile b{color:var(--accent);}
+.tldr{counter-reset:t; display:grid; gap:.8rem; margin:1.4rem 0;}
+.tldr .item{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.9rem 1rem .9rem 3.1rem; position:relative; font-size:.97rem;}
+.tldr .item::before{counter-increment:t; content:counter(t); position:absolute; left:1rem; top:.9rem;
+  font-family:"Noto Serif TC",Georgia,serif; font-size:1.5rem; font-weight:700; color:var(--accent);}
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:.8rem; margin:1.2rem 0;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:.9rem 1rem;}
+.card h3{margin:.1rem 0 .35rem; font-size:1rem;}
+.card .tag{font-size:.72rem; font-weight:700; letter-spacing:.06em; color:var(--accent);}
+.card p{font-size:.9rem; margin:.3rem 0; color:var(--ink);}
+.barrow{display:grid; grid-template-columns:9.5rem 1fr 3.6rem; align-items:center; gap:.6rem; margin:.35rem 0; font-size:.88rem;}
+.bartrack{background:var(--bar); border-radius:3px; height:14px; position:relative; overflow:hidden;}
+.barfill{position:absolute; left:0; top:0; bottom:0; border-radius:3px;}
+.bar-ok{background:var(--ok);} .bar-warn{background:var(--warn);} .bar-ruin{background:var(--ruin);}
+.barlabel{text-align:right; font-variant-numeric:tabular-nums; font-weight:600;}
+.scen{font-family:"Noto Serif TC",Georgia,serif; font-weight:700; margin:1.3rem 0 .4rem; font-size:.95rem;}
+.tablewrap{overflow-x:auto; margin:1rem 0; border:1px solid var(--line); border-radius:6px; background:var(--card);}
+table{border-collapse:collapse; width:100%; font-size:.88rem; font-variant-numeric:tabular-nums;}
+th{font-size:.74rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink2);
+  text-align:left; padding:.55rem .7rem; border-bottom:1px solid var(--line); white-space:nowrap;}
+td{padding:.5rem .7rem; border-bottom:1px solid var(--line); white-space:nowrap;}
+tr:last-child td{border-bottom:none;}
+td.r,th.r{text-align:right;}
+td.hi-ruin{color:var(--ruin); font-weight:600;}
+td.hi-warn{color:var(--warn); font-weight:600;}
+td.hi-ok{color:var(--ok); font-weight:600;}
+.verdict{margin:.9rem 0; padding:.7rem .95rem; border-radius:6px; font-size:.93rem; font-weight:600;}
+.v-hold{background:var(--accent-soft); color:var(--accent);}
+.v-cut{background:var(--ruin-bg); color:var(--ruin);}
+.v-ok{background:var(--ok-bg); color:var(--ok);}
+.v-warn{background:var(--warn-bg); color:var(--warn);}
+figure{margin:1.4rem 0; background:#FFFFFF; border:1px solid var(--line); border-radius:6px; padding:.7rem;}
+figure img{max-width:100%; height:auto; display:block;}
+figcaption{font-size:.86rem; color:var(--ink2); padding:.55rem .3rem .1rem; line-height:1.65;}
+.qa{margin:1.15rem 0; border-left:3px solid var(--accent); padding:.1rem 0 .1rem 1rem;}
+.qa .q{font-weight:700; font-family:"Noto Serif TC",Georgia,serif;}
+.qa p{font-size:.95rem; margin:.35rem 0;}
+blockquote{margin:1.6rem 0; padding:.95rem 1.15rem; background:var(--accent-soft); border-radius:6px; font-size:.98rem;}
+blockquote p{margin:0;}
+ul{padding-left:1.3rem;} li{margin:.35rem 0; font-size:.94rem;}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.85em;
+  background:var(--accent-soft); border-radius:3px; padding:.06em .3em;}
+.foot{margin-top:3rem; padding-top:1rem; border-top:1px solid var(--line); font-size:.83rem; color:var(--ink2);}
+.pill{display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.05em; border-radius:999px; padding:.1em .6em; vertical-align:middle;}
+.pill-r{background:var(--ruin-bg); color:var(--ruin);} .pill-o{background:var(--ok-bg); color:var(--ok);} .pill-w{background:var(--warn-bg); color:var(--warn);}
+@media (max-width:640px){
+  main{padding:2rem 1rem 3.5rem;}
+  h2{margin-top:2.4rem;}
+  .tldr .item{padding:.8rem .85rem .8rem 2.6rem;}
+  .tldr .item::before{left:.85rem; top:.85rem; font-size:1.3rem;}
+  .barrow{grid-template-columns:6.4rem 1fr 3rem; gap:.45rem; font-size:.83rem;}
+  th,td{padding:.45rem .55rem;}
+  blockquote{padding:.8rem .9rem;}
+  figure{padding:.5rem;}
+}
+</style>
+<main>
+<div class="eyebrow">bysq v4 · 真實資料模擬 · 2026-09</div>
+<h1>四十年後你還在嗎</h1>
+<p class="standfirst">這份報告回答一個問題：<b>退休後照一套規則花錢，錢會不會在你還活著的時候用完。</b>
+前三輪比完了「怎麼花」；這一輪把「你會活多久」放進來，並且用真實的例子——沒有勞保、沒有勞退、手上 1000 萬、3000 萬或 5000 萬、40 歲、50 歲或 65 歲退休——把答案算出來。
+每個結論都附上「在什麼情況下會翻」。</p>
+
+<div class="profile">
+<span>📚 美國 1934–2023 壓力樣本、台灣 1983–2023 樣本、16 國 1870–2020 年頻面板</span>
+<span>🧬 內政部 114 年生命表</span>
+<span>🎲 每格 10,000 條路徑，決策只看昨天以前</span>
+</div>
+
+<h2>先看懂七個詞</h2>
+<div class="cards">
+<div class="card"><div class="tag">配置</div><h3>60/40、80/20、100/0</h3><p>股票對債券的比例。60/40 是 60% 全球股票、40% 債券。100/0 就是全部股票（例如只買 VT）。</p></div>
+<div class="card"><div class="tag">花錢規則 1</div><h3>固定提領</h3><p>第一年花資產的 4%（或 3%、3.5%），之後每年照物價調整，不管市場怎麼樣。這就是「4% 法則」。</p></div>
+<div class="card"><div class="tag">花錢規則 2</div><h3>VPW（攤銷法）</h3><p>每年把「現在的資產」除以「到 100 歲還剩幾年」算出今年可以花的錢。市場跌，隔年生活費跟著跌；市場漲就多花。不會破產，但生活費會晃。</p></div>
+<div class="card"><div class="tag">花錢規則 3</div><h3>GK 護欄</h3><p>照物價調整，但資產掉太多就砍一成、漲太多就加一成。不會破產，代價是可能砍很久。</p></div>
+<div class="card"><div class="tag">指標 1</div><h3>破產率</h3><p>錢用完的時候你還活著的機率。這一輪的數字都用生命表算「還活著」；「固定 50 年」是舊算法，假設你一定活滿 50 年。</p></div>
+<div class="card"><div class="tag">指標 2</div><h3>跌破地板</h3><p>生活費連續三年低於「資產的 2%」（1000 萬就是每月 1.7 萬）。VPW 和 GK 不會破產，所以用這個看它們有多慘。</p></div>
+<div class="card"><div class="tag">指標 3</div><h3>地板佔比</h3><p>你的支出裡砍不掉的部分（房租、健保、基本伙食）佔幾成。租屋族大約七成，有房無貸五成。</p></div>
+</div>
+
+<h2>TLDR</h2>
+<div class="tldr">
+<div class="item"><b>幾歲退休比什麼策略重要。</b>固定 4% 提領，錢用完時還活著的機率：40 歲退休 15%、50 歲 10%、65 歲 2.6%。舊的「固定算 50 年」把 65 歲退休者的風險高估了 6 倍。</div>
+<div class="item"><b>沒有勞保勞退、想 50 年生活費都不變，做得到的是 3%。</b>3% 提領時，40 歲退休破產 3.6%、50 歲 2%、65 歲 0.3%。4% 只有 65 歲退休的人可以用。</div>
+<div class="item"><b>1000、3000、5000 萬的答案是同一個百分比</b>——差別只在長照：120 萬一年拖五年，1000 萬家庭任何策略都會破產 10–37%，5000 萬家庭不到 2%。</div>
+<div class="item"><b>買地板的產品沒有比較安全。</b>債券階梯和名目遞延年金的破產率都高於「VPW 加地板補足規則」；只有台灣沒有的物價連動年金會贏。真正的地板是勞保。</div>
+<div class="item"><b>VPW 加一層平滑之後，不需要 GK 了。</b>今年花「七成去年、三成 VPW 算出來的數字」，晃動跟 GK 一樣小，總量多三成。</div>
+<div class="item"><b>100% 股票能花最多錢，但「更安全」會翻。</b>16 國歷史下它的尾端輸給 60/40 和 80/20。80/20 是唯一每種算法尾端都不吃虧的配置。</div>
+<div class="item"><b>存錢階段一路保守沒有用，</b>只有退休前 10 年減碼有用。Coast FIRE 要用 1–3% 實質成長畫線，不是 5%。</div>
+<div class="item"><b>現金桶正式退場</b>：連長照剛好撞上崩盤，桶也沒有比較好。</div>
+</div>
+
+<h2>FIRE 範例：沒有勞保、沒有勞退，1000 / 3000 / 5000 萬</h2>
+<p>三個前提：全部靠投資組合、生活費每年照物價調整、不領任何年金。三種人：<b>40 歲退休算到 90 歲、50 歲退休算到 100 歲、65 歲退休算到 115 歲</b>——這就是「50 年」的三種意思。
+先講一件會讓表變簡單的事：<b>模擬結果只看「每年花掉資產的幾 %」，不看金額</b>。1000 萬花 3.3 萬一個月、5000 萬花 16.7 萬一個月，都是 4%，破產率一模一樣。金額只在長照那一行才有差。</p>
+
+<div class="tablewrap"><table>
+<tr><th>每月生活費（隨物價調整）</th><th class="r">1000 萬</th><th class="r">3000 萬</th><th class="r">5000 萬</th></tr>
+<tr><td>3% 提領</td><td class="r">2.5 萬</td><td class="r">7.5 萬</td><td class="r">12.5 萬</td></tr>
+<tr><td>3.5% 提領</td><td class="r">2.9 萬</td><td class="r">8.75 萬</td><td class="r">14.6 萬</td></tr>
+<tr><td>4% 提領</td><td class="r">3.3 萬</td><td class="r">10 萬</td><td class="r">16.7 萬</td></tr>
+</table></div>
+
+<p class="scen">問題一：生活費 50 年都不改變（固定提領、60/40），錢會不會在我活著時用完？</p>
+<div class="tablewrap"><table>
+<tr><th>提領率</th><th class="r">40 歲退休</th><th class="r">50 歲退休</th><th class="r">65 歲退休</th><th class="r">舊算法：假設一定活滿 50 年</th></tr>
+<tr><td>3%</td><td class="r hi-warn">3.6%</td><td class="r hi-ok">2.0%</td><td class="r hi-ok">0.3%</td><td class="r">5%</td></tr>
+<tr><td>3.5%</td><td class="r hi-warn">8.2%</td><td class="r hi-warn">5.2%</td><td class="r hi-ok">0.9%</td><td class="r">11%</td></tr>
+<tr><td>4%</td><td class="r hi-ruin">15.1%</td><td class="r hi-ruin">9.8%</td><td class="r hi-warn">2.6%</td><td class="r hi-ruin">19%</td></tr>
+</table></div>
+<p class="meta">美國壓力樣本（含 1940 與 1970 年代通膨）。台灣 1983–2023 樣本是樂觀上界：4% 對應 1.1%、0.5%、0.1%。40 歲退休者有 34.5% 機率活過 90 歲，50 歲退休者只有 1.3% 活過 100 歲，所以「活滿 50 年」對 65 歲的人沒有意義，對 40 歲的人才接近真實。</p>
+<ul>
+<li><b>65 歲退休：</b>4% 可以用，破產 2.6%；想更保險用 3.5%（0.9%）。</li>
+<li><b>50 歲退休：</b>4% 有一成機率活著看到錢用完；3% 是 2%。</li>
+<li><b>40 歲退休：</b>4% 是 15%，3.5% 還有 8%；要「一輩子不改變」只能用 3%，而且要接受 3.6%。錢用完的中位時點是第 38–44 年，也就是 80 歲前後——最不能重來的年紀。</li>
+<li>把配置換成 80/20 或 100/0：40 歲退休、4% 時破產從 15% 降到 11% 和 10.5%；65 歲時反而升到 3.2%（100/0）。短餘命怕波動，長餘命怕通膨。</li>
+</ul>
+
+<p class="scen">問題二：如果願意讓生活費跟著市場調整（VPW 加平滑、60/40），會怎樣？</p>
+<div class="tablewrap"><table>
+<tr><th>從 4% 起步</th><th class="r">40 歲退休</th><th class="r">50 歲退休</th><th class="r">65 歲退休</th></tr>
+<tr><td>破產率</td><td class="r hi-ok">0%</td><td class="r hi-ok">0%</td><td class="r hi-ok">0%</td></tr>
+<tr><td>生活費連續三年跌破資產 2%（活著時）</td><td class="r hi-warn">6.9%</td><td class="r hi-warn">4.3%</td><td class="r hi-ok">1.8%</td></tr>
+<tr><td>最差 10% 的情況，第 20 年的生活費是起步的</td><td class="r">68%</td><td class="r">73%</td><td class="r">86%</td></tr>
+<tr><td>前 30 年平均花的錢，比固定 4% 多</td><td class="r hi-ok">+19%</td><td class="r hi-ok">+29%</td><td class="r hi-ok">+47%</td></tr>
+<tr><td>對照 GK 護欄：跌破 2% 率</td><td class="r">10.4%</td><td class="r">8.5%</td><td class="r">4.4%</td></tr>
+<tr><td>對照 GK 護欄：最差 10% 第 20 年生活費</td><td class="r">62%</td><td class="r">62%</td><td class="r">62%</td></tr>
+</table></div>
+<p>意思是：把「一輩子不改變」換成「最壞十分之一的情況下砍三成」，破產這件事就消失了，而且平均可以多花兩到五成。這是本研究對 FIRE 者的主要建議；下一節解釋平滑怎麼做。</p>
+
+<p class="scen">問題三：1000、3000、5000 萬的差別在哪？長照。</p>
+<p>假設一半的人晚年需要長照、每年 120 萬、持續 5 年、發生在過世前。4% 起步、60/40，錢用完時還活著的機率：</p>
+<div class="tablewrap"><table>
+<tr><th>退休年齡 / 規則</th><th class="r">1000 萬</th><th class="r">3000 萬</th><th class="r">5000 萬</th></tr>
+<tr><td>40 歲 / 固定提領</td><td class="r hi-ruin">20.3%</td><td class="r hi-ruin">16.5%</td><td class="r hi-ruin">16.0%</td></tr>
+<tr><td>40 歲 / VPW</td><td class="r hi-ruin">10.8%</td><td class="r hi-ok">1.0%</td><td class="r hi-ok">0.3%</td></tr>
+<tr><td>40 歲 / GK</td><td class="r hi-warn">5.1%</td><td class="r hi-ok">0.3%</td><td class="r hi-ok">0.0%</td></tr>
+<tr><td>50 歲 / 固定提領</td><td class="r hi-ruin">17.0%</td><td class="r hi-ruin">11.8%</td><td class="r hi-ruin">10.9%</td></tr>
+<tr><td>50 歲 / VPW</td><td class="r hi-ruin">13.0%</td><td class="r hi-ok">0.9%</td><td class="r hi-ok">0.2%</td></tr>
+<tr><td>65 歲 / 固定提領</td><td class="r hi-ruin">10.3%</td><td class="r hi-warn">4.2%</td><td class="r hi-warn">3.5%</td></tr>
+<tr><td>65 歲 / VPW</td><td class="r hi-ruin">13.4%</td><td class="r hi-ok">0.5%</td><td class="r hi-ok">0.1%</td></tr>
+<tr><td>65 歲 / GK</td><td class="r hi-warn">4.2%</td><td class="r hi-ok">0.0%</td><td class="r hi-ok">0.0%</td></tr>
+</table></div>
+<ul>
+<li>1000 萬家庭：長照一年就是資產的 12%，五年吃掉六成。這不是投資組合能解決的，要用保險或家庭照護。</li>
+<li>3000 萬以上：只要不是固定提領，長照是 1% 以下的事。固定提領的數字高，是因為它不會為了長照調整其他支出。</li>
+<li><b>一個要注意的副作用：</b>平滑版的 VPW 遇到長照衝擊比純 VPW 糟很多（1000 萬、65 歲：37% 對 13%），因為平滑讓生活費慢慢才降下來，衝擊期間錢流得更快。遇到大額支出時要暫停平滑，直接照 VPW 算。</li>
+</ul>
+
+
+<p class="scen">問題四：股票比例要不要拉高？三種配置對照（固定提領、美國壓力樣本）</p>
+<div class="tablewrap"><table>
+<tr><th>提領率 / 退休年齡</th><th class="r">60/40</th><th class="r">80/20</th><th class="r">100/0</th></tr>
+<tr><td>4% / 40 歲</td><td class="r hi-ruin">15.1%</td><td class="r hi-ruin">11.2%</td><td class="r hi-ruin">10.5%</td></tr>
+<tr><td>4% / 50 歲</td><td class="r hi-warn">9.8%</td><td class="r hi-warn">7.8%</td><td class="r hi-warn">7.6%</td></tr>
+<tr><td>4% / 65 歲</td><td class="r hi-ok">2.6%</td><td class="r hi-ok">2.6%</td><td class="r hi-warn">3.2%</td></tr>
+<tr><td>3% / 40 歲</td><td class="r hi-warn">3.6%</td><td class="r hi-warn">3.1%</td><td class="r hi-warn">3.8%</td></tr>
+<tr><td>3% / 65 歲</td><td class="r hi-ok">0.3%</td><td class="r hi-ok">0.4%</td><td class="r hi-ok">0.8%</td></tr>
+</table></div>
+<ul>
+<li>100/0 的單次衝擊確實比較大（回撤可到一半），但那只在餘命短的時候是主要風險。40 歲退休要撐 40 年以上，主要敵人是通膨，債券在 1940、1970 年代那種環境會被慢慢磨掉，所以 100/0 反而比 60/40 少破產；65 歲退休則相反。</li>
+<li>用 VPW 加平滑時，80/20 和 60/40 的跌破率幾乎一樣（40 歲 6.6% 對 6.9%），但 80/20 平均多花的錢多很多（40 歲 +40% 對 +19%、65 歲 +73% 對 +47%）。</li>
+<li>這個「100/0 更安全」在台灣樣本是反的（40 歲、4%：60/40 1.1%、100/0 3.7%），在 16 國歷史下也不成立（下一張表）。所以本報告的預設是 80/20。</li>
+</ul>
+
+<p class="scen">問題五：如果我買的是 VT，16 國的歷史算不算數？四種「世界」對照</p>
+<p>前面的數字都是「美國壓力樣本」：把美國 1934 年起的股債通膨當成你的世界。這一輪另外用 16 個已開發國家 1870 年起的年度資料算了三種世界。要看懂表，先知道每一欄是什麼意思：</p>
+<div class="cards">
+<div class="card"><div class="tag">欄 1</div><h3>美國</h3><p>你是美國人，買美股美債、付美國物價。這是主表用的壓力樣本。</p></div>
+<div class="card"><div class="tag">欄 2</div><h3>全球加權 ≈ 持有 VT</h3><p>16 國股票按經濟規模加權（VT 是按市值，方向相同），通膨是各國平均。最接近「住台灣、買 VT」的情況，但沒有算匯率。</p></div>
+<div class="card"><div class="tag">欄 3</div><h3>16 國隨機</h3><p>你是隨機一個已開發國家的人，只買自己國家的股債、付自己國家的物價。包含德國 1920 年代、日本 1945 年那種惡性通膨與戰敗。這是「本國偏誤」的最壞情況。</p></div>
+<div class="card"><div class="tag">欄 4</div><h3>16 國、去掉惡性通膨</h3><p>同欄 3，但剔除通膨超過 50% 的 21 個國家年。剩下的是「普通的」壞年代：戰後、1970 年代。</p></div>
+</div>
+<div class="tablewrap"><table>
+<tr><th>固定提領，錢用完時還活著</th><th class="r">美國</th><th class="r">全球 ≈ VT</th><th class="r">16 國隨機</th><th class="r">16 國去惡性通膨</th></tr>
+<tr><td>4% / 40 歲 / 60/40</td><td class="r hi-ruin">13.2%</td><td class="r hi-ruin">18.2%</td><td class="r hi-ruin">34.3%</td><td class="r hi-ruin">28.2%</td></tr>
+<tr><td>4% / 40 歲 / 80/20</td><td class="r hi-ruin">10.4%</td><td class="r hi-ruin">11.9%</td><td class="r hi-ruin">32.2%</td><td class="r hi-ruin">26.2%</td></tr>
+<tr><td>4% / 40 歲 / 100/0</td><td class="r hi-ruin">10.5%</td><td class="r hi-warn">8.6%</td><td class="r hi-ruin">32.2%</td><td class="r hi-ruin">27.0%</td></tr>
+<tr><td>4% / 65 歲 / 60/40</td><td class="r hi-ok">2.5%</td><td class="r hi-warn">3.5%</td><td class="r hi-ruin">11.7%</td><td class="r hi-warn">7.8%</td></tr>
+<tr><td>4% / 65 歲 / 80/20</td><td class="r hi-ok">2.3%</td><td class="r hi-ok">2.1%</td><td class="r hi-ruin">11.9%</td><td class="r hi-warn">8.3%</td></tr>
+<tr><td>4% / 65 歲 / 100/0</td><td class="r hi-warn">2.7%</td><td class="r hi-ok">1.6%</td><td class="r hi-ruin">13.0%</td><td class="r hi-warn">9.9%</td></tr>
+<tr><td>3% / 40 歲 / 80/20</td><td class="r hi-ok">2.3%</td><td class="r hi-ok">2.4%</td><td class="r hi-ruin">19.4%</td><td class="r hi-ruin">13.1%</td></tr>
+<tr><td>3% / 50 歲 / 80/20</td><td class="r hi-ok">1.4%</td><td class="r hi-ok">1.4%</td><td class="r hi-ruin">14.1%</td><td class="r hi-warn">8.8%</td></tr>
+<tr><td>3% / 65 歲 / 80/20</td><td class="r hi-ok">0.4%</td><td class="r hi-ok">0.2%</td><td class="r hi-warn">6.4%</td><td class="r hi-warn">3.4%</td></tr>
+</table></div>
+<div class="tablewrap"><table>
+<tr><th>VPW（4% 起步），生活費連續三年跌破資產 2%</th><th class="r">美國</th><th class="r">全球 ≈ VT</th><th class="r">16 國隨機</th><th class="r">16 國去惡性通膨</th></tr>
+<tr><td>40 歲 / 80/20</td><td class="r hi-warn">4.6%</td><td class="r hi-warn">5.6%</td><td class="r hi-ruin">29.7%</td><td class="r hi-ruin">22.0%</td></tr>
+<tr><td>40 歲 / 100/0</td><td class="r hi-warn">6.5%</td><td class="r hi-warn">4.0%</td><td class="r hi-ruin">31.8%</td><td class="r hi-ruin">24.9%</td></tr>
+<tr><td>65 歲 / 80/20</td><td class="r hi-ok">1.3%</td><td class="r hi-ok">1.1%</td><td class="r hi-ruin">12.5%</td><td class="r hi-warn">8.2%</td></tr>
+<tr><td>65 歲 / 100/0</td><td class="r hi-ok">1.9%</td><td class="r hi-ok">1.0%</td><td class="r hi-ruin">14.2%</td><td class="r hi-warn">10.1%</td></tr>
+</table></div>
+<p class="meta">這兩張表用年頻引擎與生命表；「美國」欄和前面月頻引擎的數字差 1–2 個百分點是頻率造成，可以直接對照。</p>
+<ul>
+<li><b>持有 VT 的人看「全球」那一欄，答案和美國樣本差不多，甚至略好</b>：分散掉單一國家的股市崩潰後，全球股票的 100/0 是三種配置裡最安全的（40 歲、4%：8.6%）。這是 VT 存在的理由。</li>
+<li><b>「16 國隨機」不是 VT 持有人的世界</b>，它是「你只買自己國家的股債」的世界。它的數字高兩到三倍，主要來自單一國家的股市歸零與惡性通膨，而 VT 分散掉了前者。</li>
+<li><b>但 VT 分散不掉的是你的物價和匯率。</b>你付的是台灣的物價、領的是台幣，VT 的美元報酬要換算成台幣。全球欄把各國物價平均掉了，也沒有算匯率，所以真實答案落在「全球」與「16 國去惡性通膨」之間，偏向前者。台灣自己 1983 年起的樣本更樂觀（4%、40 歲、80/20：2%），但那 40 年沒有任何長期通膨，只能當上界。</li>
+<li>結論不變：沒有勞保勞退，「一輩子不改變」要用 3%；持有 VT 的話 80/20 到 100/0 都可以，60/40 反而是四個世界裡最差或次差的選擇。</li>
+</ul>
+
+<div class="verdict v-hold">FIRE 者的結論：沒有勞保勞退，「50 年生活費不變」只有 3% 做得到；用 4% 就要接受生活費會晃（最壞情況砍三成），換來零破產和多花兩到五成。配置用 80/20（持有 VT 的人 100/0 也行），60/40 對長餘命者最差。1000 萬的人另外要處理長照，3000 萬以上不用。</div>
+
+<h2>發現一：地板要靠規則和勞保，不靠買產品</h2>
+<p>砍不掉的支出佔比高的人（例如租屋族的七成），是不是應該先買一段債券階梯或遞延年金把地板鎖住，剩下的錢再全押股票？我們測了：S1 勞保當地板加 100% 股票、S2 債券階梯覆蓋地板 10/15/20 年、S3 遞延年金 80 或 85 歲起領、S4 兩者疊加。所有策略都加了「生活費不低於地板」的補足規則。65 歲、用生命表、美國壓力樣本、4% 起步。</p>
+
+<p class="scen">砍不掉支出佔七成、沒有勞保：錢用完時還活著的機率</p>
+<div class="barrow"><span>GK 60/40</span><div class="bartrack"><div class="barfill bar-ok" style="width:3%"></div></div><span class="barlabel">0.4%</span></div>
+<div class="barrow"><span>VPW 60/40</span><div class="bartrack"><div class="barfill bar-ok" style="width:6%"></div></div><span class="barlabel">0.9%</span></div>
+<div class="barrow"><span>S1 VPW 100/0</span><div class="bartrack"><div class="barfill bar-warn" style="width:9%"></div></div><span class="barlabel">1.4%</span></div>
+<div class="barrow"><span>S3 名目年金 80 歲起</span><div class="bartrack"><div class="barfill bar-warn" style="width:11%"></div></div><span class="barlabel">1.6%</span></div>
+<div class="barrow"><span>固定提領 60/40</span><div class="bartrack"><div class="barfill bar-ruin" style="width:22%"></div></div><span class="barlabel">3.2%</span></div>
+<div class="barrow"><span>S2 階梯 15 年</span><div class="bartrack"><div class="barfill bar-ruin" style="width:24%"></div></div><span class="barlabel">3.4%</span></div>
+<div class="barrow"><span>S3 物價連動年金（台灣沒有）</span><div class="bartrack"><div class="barfill bar-ok" style="width:2%"></div></div><span class="barlabel">0.2%</span></div>
+
+<div class="tablewrap"><table>
+<tr><th>策略（65 歲、無勞保）</th><th class="r">地板佔比 0.5</th><th class="r">地板佔比 0.7</th><th class="r">地板佔比 1.0</th><th class="r">活到 96 歲的人（0.7）</th></tr>
+<tr><td>VPW 60/40 加補足</td><td class="r hi-ok">0.2%</td><td class="r hi-ok">0.9%</td><td class="r hi-warn">4.1%</td><td class="r hi-warn">5.1%</td></tr>
+<tr><td>GK 60/40（地板不可砍）</td><td class="r hi-ok">0.1%</td><td class="r hi-ok">0.4%</td><td class="r hi-warn">3.2%</td><td class="r hi-ok">2.1%</td></tr>
+<tr><td>固定提領 60/40</td><td class="r hi-warn">3.6%</td><td class="r hi-warn">3.2%</td><td class="r hi-warn">3.2%</td><td class="r hi-ruin">9.8%</td></tr>
+<tr><td>S2 階梯 15 年（付掉 39% 資產）</td><td class="r hi-ok">1.0%</td><td class="r hi-warn">3.4%</td><td class="r hi-ruin">14.4%</td><td class="r hi-ruin">12.8%</td></tr>
+<tr><td>S3 名目年金 80 歲起（付掉 23%）</td><td class="r hi-ok">0.2%</td><td class="r hi-warn">1.6%</td><td class="r hi-ruin">10.8%</td><td class="r hi-warn">5.1%</td></tr>
+<tr><td>S3 物價連動年金（假設性）</td><td class="r hi-ok">0.0%</td><td class="r hi-ok">0.2%</td><td class="r hi-ruin">7.2%</td><td class="r hi-ok">0.3%</td></tr>
+</table></div>
+<ul>
+<li><b>前一輪說「地板佔比到 0.7 動態規則就失效」，是因為固定算 50 年。</b>用生命表加補足規則，0.7 時 GK 0.4%、VPW 0.9%。要到 1.0（全部砍不掉）才退化成固定提領。</li>
+<li><b>階梯每一格都比不買差：</b>用 1% 實質利率鎖 15 年地板要付掉 39% 的資產，剩下的 61% 得在第 16 年起扛全部地板，而且階梯不會因為你過世而退款。</li>
+<li><b>名目年金也比不買差：</b>附加費用從 10% 加到 30% 只讓破產從 1.4% 升到 1.8%，名目和物價連動的差距（1.6% 對 0.2%）是它的五倍。吃掉年金的是 15 年的通膨，不是保險公司。</li>
+<li><b>勞保才是地板：</b>勞保金額等於資產的 1%（5000 萬家庭）就把所有策略壓到 0.6% 以下；等於 2.5%（2000 萬家庭）全部歸零。</li>
+<li>50 歲退休、地板 0.7、沒有勞保：VPW 和 GK 都是 2.5%，活到 96 歲的人 6–7%——那裡缺的是物價連動年金，或更低的支出率。</li>
+</ul>
+
+<h2>發現二：加上死亡率，答案要按年齡拆開</h2>
+<div class="tablewrap"><table>
+<tr><th>美國壓力樣本：錢用完時還活著</th><th class="r">40 歲退休</th><th class="r">50 歲</th><th class="r">60 歲</th><th class="r">65 歲</th><th class="r">舊算法：固定 50 年</th></tr>
+<tr><td>60/40 固定 4%</td><td class="r hi-ruin">15.1%</td><td class="r hi-ruin">9.8%</td><td class="r hi-warn">4.9%</td><td class="r hi-warn">2.6%</td><td class="r hi-ruin">19.5%</td></tr>
+<tr><td>100/0 固定 4%</td><td class="r hi-ruin">10.5%</td><td class="r hi-ruin">7.6%</td><td class="r hi-warn">4.9%</td><td class="r hi-warn">3.2%</td><td class="r hi-ruin">12.7%</td></tr>
+<tr><td>60/40 固定 3%</td><td class="r hi-warn">3.6%</td><td class="r hi-ok">2.0%</td><td class="r hi-ok">0.7%</td><td class="r hi-ok">0.3%</td><td class="r hi-warn">5.3%</td></tr>
+<tr><td>GK、VPW（任一配置）</td><td class="r hi-ok">0%</td><td class="r hi-ok">0%</td><td class="r hi-ok">0%</td><td class="r hi-ok">0%</td><td class="r hi-ok">0%</td></tr>
+</table></div>
+<div class="tablewrap"><table>
+<tr><th>生活費連續三年跌破資產 2%</th><th class="r">40 歲</th><th class="r">50 歲</th><th class="r">60 歲</th><th class="r">65 歲</th></tr>
+<tr><td>60/40 GK</td><td class="r hi-ruin">10.4%</td><td class="r hi-warn">8.5%</td><td class="r hi-warn">5.9%</td><td class="r hi-warn">4.4%</td></tr>
+<tr><td>60/40 VPW</td><td class="r hi-warn">7.2%</td><td class="r hi-warn">4.8%</td><td class="r hi-warn">3.1%</td><td class="r hi-ok">2.2%</td></tr>
+<tr><td>80/20 VPW</td><td class="r hi-warn">6.7%</td><td class="r hi-warn">4.5%</td><td class="r hi-warn">2.9%</td><td class="r hi-ok">2.2%</td></tr>
+<tr><td>100/0 VPW</td><td class="r hi-warn">8.1%</td><td class="r hi-warn">5.7%</td><td class="r hi-warn">3.8%</td><td class="r hi-warn">3.0%</td></tr>
+</table></div>
+<ul>
+<li>65 歲退休：固定提領回到可以用的範圍；VPW 和 GK 的價值從「避免破產」變成「多花錢」（VPW 平均多花三到四成）。</li>
+<li>40 歲退休：所有純投資組合策略的失敗率都接近或超過一成。答案不是換策略，是不要用 4%。</li>
+<li>有一條會翻：40 歲退休用 VPW，假設一般壽命時 60/40 比 100/0 好（7.2% 對 8.1%），假設多活 6 年時 100/0 反而好（9.0% 對 9.5%）。其他排序（VPW 優於 GK 優於固定）在所有壽命假設、單身或夫妻下都不翻。</li>
+</ul>
+
+<h2>發現三：VPW 加平滑之後，GK 沒有存在的理由了</h2>
+<p>GK 前一輪唯一留下的優點是「生活費比較穩」。這一輪在 VPW 上加兩種平滑，用「每年生活費變動的幅度」和「生活費從高點掉多少」來量。美國樣本、固定 50 年、60/40：</p>
+<div class="tablewrap"><table>
+<tr><th>規則</th><th class="r">跌破 2% 率</th><th class="r">50 年總生活費（最差 5%）</th><th class="r">總生活費（中位）</th><th class="r">每年變動幅度</th><th class="r">從高點最多掉</th></tr>
+<tr><td>GK</td><td class="r">11.6%</td><td class="r">1.21</td><td class="r">2.58</td><td class="r hi-ok">5.2%</td><td class="r">28%</td></tr>
+<tr><td>VPW</td><td class="r hi-ok">5.7%</td><td class="r hi-ok">1.52</td><td class="r hi-ok">3.37</td><td class="r hi-ruin">11.4%</td><td class="r hi-ruin">42%</td></tr>
+<tr><td><b>VPW 平滑 0.7</b></td><td class="r hi-ok">6.2%</td><td class="r hi-ok">1.50</td><td class="r hi-ok">3.51</td><td class="r hi-ok">5.5%</td><td class="r hi-ok">27%</td></tr>
+<tr><td><b>W7 成功機率護欄</b></td><td class="r hi-ok">5.6%</td><td class="r">1.40</td><td class="r">3.32</td><td class="r hi-ok">5.1%</td><td class="r hi-ok">13%</td></tr>
+</table></div>
+<p><b>平滑 0.7 的做法：</b>今年生活費 = 0.7 × 去年生活費（隨物價調整）+ 0.3 × VPW 今年算出來的數字。去年花 100 萬、VPW 說今年只能花 70 萬，你花 91 萬；隔年如果還是 70 萬，就再降到 85 萬。跌幅攤在三四年裡，總量幾乎沒變，破產率沒有增加。</p>
+<p><b>W7 的做法：</b>每年估一次「以現在的資產和花法，撐到終點的機率」，低於 70% 砍一成、高於 95% 加一成。它最穩，總量比 VPW 少一點，仍然多過 GK。</p>
+<p>不建議的做法：硬性上限（每年最多降 2.5%）。生活費追不上資產時會真的破產（50 年內 1–2%）。</p>
+<p>另外測了「照餘命每年重算」的台灣版 RMD：如果 buffer 只用平均餘命，前幾年會花 7.8%、活得久的人 14% 跌破地板；餘命加 10 年後，它是用生命表衡量時生前效用最高的規則。規劃只到 100 歲又不延長的 VPW，每次延長要砍四成生活費。</p>
+
+<h2>發現四：國際歷史下，「股票越多越安全」會翻</h2>
+<p>用 16 個已開發國家 1870 年起的本國股債通膨資料，隨機拼接（像 Anarkulova 與 Cederburg 的做法），和美國單一國家對照。50 年、固定 4%、破產率：</p>
+<div class="tablewrap"><table>
+<tr><th>配置</th><th class="r">美國歷史</th><th class="r">16 國池化</th><th class="r">16 國、剔除惡性通膨</th></tr>
+<tr><td>60/40 固定 4%</td><td class="r">17.2%</td><td class="r hi-ruin">41.9%</td><td class="r hi-ruin">34.5%</td></tr>
+<tr><td>100/0 固定 4%</td><td class="r">12.9%</td><td class="r hi-ruin">38.6%</td><td class="r hi-ruin">31.7%</td></tr>
+<tr><td>60/40 VPW：跌破 2% 率</td><td class="r hi-ok">4.0%</td><td class="r hi-ok">30.4%</td><td class="r hi-ok">20.5%</td></tr>
+<tr><td>80/20 VPW：跌破 2% 率</td><td class="r hi-ok">3.4%</td><td class="r hi-ok">29.5%</td><td class="r hi-ok">20.8%</td></tr>
+<tr><td>100/0 VPW：跌破 2% 率</td><td class="r">4.3%</td><td class="r">31.2%</td><td class="r">23.3%</td></tr>
+<tr><td>2% 終身年金 + 100/0 VPW：跌破 2.5% 率</td><td class="r hi-ok">0%</td><td class="r hi-ok">7.4%</td><td class="r hi-ok">3.2%</td></tr>
+</table></div>
+<ul>
+<li>如果你的國家是「隨機一個已開發國家的過去」，固定提領沒有安全區：30 年要 10% 破產得用 2.8%，50 年連 2% 都有 12.7%。</li>
+<li>100/0 在美國歷史尾端最好，在 16 國池化下輸給 60/40 和 80/20。中位數永遠是 100/0 最高，翻的是最壞情況。80/20 在每個樣本尾端都不吃虧。</li>
+<li>VPW 優於 GK 在每個樣本、每個配置都成立——前提是 VPW 的預期報酬設 3–4%，設 5% 就輸了。</li>
+<li>唯一在每個樣本都大幅改善尾端的東西是終身年金地板。</li>
+</ul>
+
+<h2>發現五：存錢階段——一路保守沒有用，Coast 線畫錯了</h2>
+<div class="tablewrap"><table>
+<tr><th>存 30 年、每年投入一年生活費（美國）：終值是幾年生活費</th><th class="r">最差 5%</th><th class="r">中位</th></tr>
+<tr><td>一路 60/40</td><td class="r">37 年</td><td class="r">72 年</td></tr>
+<tr><td>一路 100/0</td><td class="r hi-ok">40 年</td><td class="r hi-ok">107 年</td></tr>
+<tr><td>100/0，最後 10 年滑到 60/40（bond tent）</td><td class="r hi-ok">40 年</td><td class="r">98 年</td></tr>
+</table></div>
+<ul>
+<li>保守配置的分布比較窄，但整條往下移：最差情況沒有比較好，中位少三分之一。只有退休前 10 年減碼的 bond tent，在最差情況持平或略勝。</li>
+<li>錢存不夠時保守最糟：每年只存半年生活費、存 20 年再固定 4% 提領，60/40 破產 39%、100/0 25%。投入率和年數壓過所有配置差異。</li>
+<li>Coast FIRE：用 5% 實質成長畫線、一碰到就停止投入，美國樣本一半以上會被迫回頭存錢。要用 1–3% 畫線；即使如此，終值最差情況只有不 coast 的三分之二。</li>
+<li>提領規則的排序（VPW 優於 GK 優於固定）不受存錢階段的配置影響。</li>
+</ul>
+
+<h2>發現六：長照是財富問題，桶正式退場</h2>
+<div class="tablewrap"><table>
+<tr><th>65 歲，有長照衝擊的路徑（美國）</th><th class="r">固定 60/40</th><th class="r">3 年現金桶＋固定</th><th class="r">GK 60/40</th><th class="r">VPW 60/40</th></tr>
+<tr><td>1000 萬 / 60 萬一年 / 5 年 / 剛好撞上崩盤</td><td class="r hi-ruin">9.5%</td><td class="r hi-ruin">10.0%</td><td class="r hi-ok">0.3%</td><td class="r hi-warn">1.1%</td></tr>
+<tr><td>1000 萬 / 120 萬 / 8 年 / 臨終</td><td class="r hi-ruin">38%</td><td class="r hi-ruin">29%</td><td class="r hi-ruin">32%</td><td class="r hi-ruin">56%</td></tr>
+<tr><td>3000 萬 / 120 萬 / 8 年 / 撞上崩盤</td><td class="r hi-ruin">9.6%</td><td class="r hi-ruin">9.8%</td><td class="r hi-ok">0.3%</td><td class="r hi-warn">1.1%</td></tr>
+<tr><td>5000 萬 / 120 萬 / 8 年 / 臨終</td><td class="r hi-warn">5.6%</td><td class="r hi-warn">5.8%</td><td class="r hi-ok">0.0%</td><td class="r hi-ok">0.7%</td></tr>
+</table></div>
+<ul>
+<li>「衝擊剛好落在崩盤中」是現金桶理論上唯一該贏的場景，結果 3 年桶的破產率還是高於不設桶。桶只買到延後，錢終究從股票出。</li>
+<li>VPW 對晚年大額支出最脆弱，因為它的設計就是把錢在生前花完；GK 因為長期砍支出反而留有餘裕。前置花錢的規則需要另外的長照準備。</li>
+</ul>
+
+<h2>發現七：Return stacking 的優勢全靠趨勢策略</h2>
+<p>「五五配」不是股債各半，是一半 RSSB 加一半 RSST 兩檔槓桿 ETF，實際曝險 100% 股票加 50% 債券加 50% 趨勢策略。它在合成序列下壓倒 80/20（50 年固定 4% 破產 0.6% 對 12.9%），但前提是趨勢策略未來賺到歷史上的報酬（1985 年後的資料是 Sharpe 接近 1 的毛報酬因子）。趨勢報酬打七五折再加 0.5% 融資成本，優勢就消失。債券疊加（RSSB）在 1966–82、1973–74、2022 每個通膨型壓力期都放大損失。這一節是「不穩健」，不是推薦。</p>
+
+<h2>發現八：真實世界打幾折</h2>
+<div class="cards">
+<div class="card"><div class="tag">費用</div><h3>每年 0.7% ≈ 提領率多 0.5 個百分點</h3><p>60/40 固定 4%、50 年破產 19.7% → 30.7%。排序不變。</p></div>
+<div class="card"><div class="tag">恐慌賣出</div><h3>跌破率變 1.5–2 倍</h3><p>股市跌三成超過半年時六成機率清倉、之後慢慢回場：100% 股票的跌破率從 1.2% 變 2.5%，平均生活費少 2–4%。</p></div>
+<div class="card"><div class="tag">支出隨年齡變化</div><h3>只有醫療支出晚才對固定提領有利</h3><p>先降後升、80 歲才升：固定提領破產 3.2% → 2.2%；75 歲就升：反而 3.5%。</p></div>
+<div class="card"><div class="tag">勞退</div><h3>勞退月領不是終身年金</h3><p>按平均餘命分期給付、23 年後結束、不隨物價調整。勞保歸零時，把它當終身年金的舊算法低估破產率 3–5 倍。</p></div>
+<div class="card"><div class="tag">樣本延長</div><h3>補到 2026 年：全體變好、沒有翻轉</h3><p>60/40 固定 4% 破產 19.7% → 17.5%。主表用 2023 年截尾，真實數字在兩者之間。</p></div>
+<div class="card"><div class="tag">台灣樣本的樂觀</div><h3>把台灣樣本拉向美國：質借的強制事件 4.9% → 14.6%</h3><p>報酬偏誤是主因。「質借淨值勝過賣股」不翻，翻的是最壞情況。</p></div>
+</div>
+
+<h2>會翻與不會翻</h2>
+<div class="tablewrap"><table>
+<tr><th>結論</th><th>翻的條件</th><th>判定</th></tr>
+<tr><td>100/0 比 60/40 更安全</td><td>換成 16 國樣本；多活 6 年；65 歲短餘命</td><td><span class="pill pill-r">不穩健</span></td></tr>
+<tr><td>VPW 優於 GK</td><td>VPW 預期報酬設 5% 以上時輸</td><td><span class="pill pill-w">有條件</span></td></tr>
+<tr><td>五五配優於 80/20</td><td>趨勢報酬打七五折加 0.5% 利差</td><td><span class="pill pill-r">不穩健</span></td></tr>
+<tr><td>Coast 線的倍數、bond tent 是否勝過一路 100/0</td><td>引擎與年期</td><td><span class="pill pill-w">數值不穩健</span></td></tr>
+<tr><td>支出率比策略重要；VPW 優於 GK 優於固定；年金地板改變尾端；桶無效；80/20 尾端不吃虧；一路保守沒有用；勞退分期給付讓晚年地板變薄</td><td>所有變體下都不翻</td><td><span class="pill pill-o">穩健</span></td></tr>
+</table></div>
+
+<h2>沒算的東西</h2>
+<ul>
+<li>台股質借（資料不在這個專案）；物價連動年金與 80 歲起領年金的真實報價（台灣沒有，本報告用精算價，標假設性）。</li>
+<li>逐項稅制、高周轉策略的交易成本、因為生活費晃動而放棄規則的行為——這些都讓 VPW、GK、桶、質借偏樂觀。</li>
+<li>長照發生機率用 50% 假設；累積期沒算薪資成長與失業給付。</li>
+</ul>
+
+<h2>方法與重現</h2>
+<ul>
+<li>月頻引擎：Shiller 1871–2026 加 FRED，台灣版以匯率轉台幣、台灣物價平減；主表截到 2023-07 以和前三輪可比。年頻引擎：JST 16 國。生命表：內政部 114 年簡易生命表，85 歲以上以 Gompertz 封閉、重現公告餘命。</li>
+<li>每格 10,000 條路徑、區塊 bootstrap（平均 36 個月）、期初提領、決策只用前一月以前的資訊；死亡與市場獨立，事後套用。</li>
+<li>FIRE 範例：<code>python run_v4_fire50.py</code>（月頻、美國與台灣樣本）與 <code>python run_v4_fire50_intl.py</code>（年頻、四種世界），輸出 <code>results/v4_fire50.csv</code>、<code>results/v4_fire50_intl.csv</code>。完整數字在 <code>docs/REPORT-v4.md</code>，逐節對照在 <code>docs/v4-spec-vs-results.md</code>。</li>
+</ul>
+
+<div class="foot">bysq v4 · 2026-09 · 所有數字為歷史資料模擬，不是預測；標「不穩健」的結論在合理假設範圍內會翻，請連同條件一起引用。</div>
+</main>
