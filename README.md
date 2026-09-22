@@ -20,6 +20,7 @@
 | 該租房還是買房、月租 6 萬划不划算 | `docs/bysq_report_rent_vs_buy.html`（雜誌版，含計算器） |
 | 完整技術報告（v1+v2+v3 全部數字與失效條件） | `REPORT.md` |
 | **v4 結論、給非本科的人看** | `docs/bysq_report_v4.html`（雜誌版） |
+| **台灣人持有 VT、無勞保勞退：幾歲退休、100/0 或 80/20、會不會破產、剩多少** | `docs/bysq_report_twvt.html`（簡易版，含匯率） |
 | **v4 完整數字：死亡率、地板＋上檔、國際樣本、累積期、長照、return stacking、真實性模組** | `docs/REPORT-v4.md`（對照表 `docs/v4-spec-vs-results.md`） |
 | 想知道原始規格做到多少 | `docs/v1-spec-vs-results.md`、`docs/v4-spec-vs-results.md`、`docs/handoff-v1~v4.md` |
 | 資料從哪來、哪一段是拼接的 | `data/PROVENANCE.md` |

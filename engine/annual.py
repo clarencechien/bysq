@@ -105,13 +105,13 @@ def load_jst(path=JST_CSV):
             gdp, xr = _f(r["gdp"]), _f(r["xrusd"])
             gdp_usd = gdp / xr if (not np.isnan(gdp) and not np.isnan(xr) and xr > 0) else np.nan
             rec.append((y, eq, bd, bl, cpi / cpi_prev - 1.0, gdp_usd,
-                        _f(r["crisisJST"]), wts.get((iso, y), np.nan)))
+                        _f(r["crisisJST"]), wts.get((iso, y), np.nan), xr))
         if not rec:
             continue
         a = np.array(rec, dtype=float)
         out[iso] = dict(year=a[:, 0].astype(int), eq=a[:, 1], bond=a[:, 2],
                         bill=a[:, 3], infl=a[:, 4], gdp_usd=a[:, 5],
-                        crisis=a[:, 6], rgdp=a[:, 7])
+                        crisis=a[:, 6], rgdp=a[:, 7], xrusd=a[:, 8])
     return out
 
 
@@ -221,6 +221,56 @@ def global_series(countries, weights="rgdp"):
     return panel
 
 
+def global_usd_series(countries, weights="rgdp"):
+    """v4 TW-VT: a USD-denominated, real-GDP-weighted global EQUITY series
+    (the closest JST can get to VT: each country's local nominal equity
+    return converted to USD with xrusd = local per USD), paired with US
+    bonds, US bills and US CPI (BND / a USD investor's price level). The
+    TWD investor's real return is then USD real return x (1 + real TWD/USD
+    change), applied by simulate_annual(fx_overlay=...)."""
+    usa = countries["USA"]
+    us_idx = {int(y): i for i, y in enumerate(usa["year"])}
+    years = sorted(set(int(y) for c in countries.values() for y in c["year"]))
+    gfill = {}
+    for iso, c in countries.items():
+        g = c["rgdp"].copy()
+        if np.isnan(g).any():
+            ok = ~np.isnan(g)
+            g = np.interp(c["year"], c["year"][ok], g[ok])
+        gfill[iso] = dict(zip(c["year"], g))
+    lookup = {iso: {int(y): i for i, y in enumerate(c["year"])} for iso, c in countries.items()}
+    rows = []
+    for y in years:
+        if y not in us_idx or (y - 1) not in us_idx:
+            continue
+        req, w = [], []
+        for iso, c in countries.items():
+            i = lookup[iso].get(y); j = lookup[iso].get(y - 1)
+            if i is None or j is None:
+                continue
+            xr1, xr0 = c["xrusd"][i], c["xrusd"][j]
+            if not (np.isfinite(xr1) and np.isfinite(xr0)) or xr1 <= 0 or xr0 <= 0:
+                continue
+            r_usd = (1 + c["eq"][i]) * (xr0 / xr1) - 1          # local -> USD
+            if not np.isfinite(r_usd) or r_usd < -0.999 or r_usd > 20:
+                continue
+            req.append(r_usd); w.append(gfill[iso][y])
+        if not req:
+            continue
+        w = np.array(w, float); w = w / w.sum()
+        k = us_idx[y]
+        rows.append((y, float(np.dot(w, req)), usa["bond"][k], usa["bill"][k], usa["infl"][k], len(w), w.max()))
+    a = np.array(rows, float)
+    n = len(a)
+    panel = dict(year=a[:, 0].astype(int), eq=a[:, 1], bond=a[:, 2], bill=a[:, 3], infl=a[:, 4],
+                 gdp_usd=np.full(n, np.nan), rgdp=np.full(n, np.nan), cid=np.zeros(n, int),
+                 iso=np.array(["GLOBAL_USD"] * n), n_countries=a[:, 5].astype(int), w_max=a[:, 6],
+                 countries=["GLOBAL_USD"])
+    nxt = np.full(n, -1, dtype=np.int64); nxt[:-1] = np.arange(1, n)
+    panel["next"] = nxt
+    return panel
+
+
 def us_series(countries):
     return stack_panel(countries, include=["USA"])
 
@@ -308,7 +358,7 @@ def _vpw_factor(rule, y, years):
     return r / (1 - (1 + r) ** -n_left) if n_left > 1 else 1.0
 
 
-def simulate_annual(idx, panel, stock_w, rule, w0=1.0):
+def simulate_annual(idx, panel, stock_w, rule, w0=1.0, fx_overlay=None):
     """Annual steps, vectorised across paths.
 
     idx: (P, years) row indices into the stacked panel.
@@ -323,6 +373,12 @@ def simulate_annual(idx, panel, stock_w, rule, w0=1.0):
     eq = panel["eq"][idx]
     bd = panel["bond"][idx]
     infl = panel["infl"][idx]
+    if fx_overlay is not None:
+        # v4 TW-VT: per-path real exchange-rate overlay (TWD investor holding
+        # USD assets): both legs are multiplied by (1 + fx) each year
+        eq = (1.0 + eq) * (1.0 + fx_overlay) - 1.0
+        bd = (1.0 + bd) * (1.0 + fx_overlay) - 1.0
+    wealth_path = np.zeros((P, years))
     price = np.ones((P, years))
     price[:, 1:] = np.cumprod(1.0 + infl[:, :-1], axis=1)
 
@@ -352,6 +408,7 @@ def simulate_annual(idx, panel, stock_w, rule, w0=1.0):
 
     for y in range(years):
         wealth = bal_s + bal_b
+        wealth_path[:, y] = wealth / price[:, y]          # real wealth at the START of year y
         if y > 0:
             yr_infl = infl[:, y - 1]
             if isinstance(inner, FixedReal):
@@ -403,6 +460,7 @@ def simulate_annual(idx, panel, stock_w, rule, w0=1.0):
         ruin_year=ruin_year,
         final_real_wealth=final_real_wealth,
         annual_real_spend=spend_real,
+        wealth_path=wealth_path,
     )
 
 
