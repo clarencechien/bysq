@@ -26,5 +26,7 @@
 | §10.1 | 逐策略偏誤敏感度（報酬與利率各自插值） | `run_v4_bias.py`（`path_c_var` 模式） | `results/v4_bias.csv`；v4.10.1 | ✅ |
 | §10.2 | 死亡率回套 v1–v3 結論 | v4.2 末段清單 | | ✅ |
 | §12 | 六個決策問題 | REPORT-v4 v4.12 | | ✅ |
+| 規格外 | FIRE 範例（無勞保勞退、1000/3000/5000 萬、40/50/65 歲、三配置、四種世界） | `run_v4_fire50.py`、`run_v4_fire50_intl.py` | `results/v4_fire50.csv`、`results/v4_fire50_intl.csv`；REPORT-v4 v4.11；`docs/bysq_report_v4.html` | ✅ |
+| 規格外 | 台灣人持有 VT + BND 含匯率（美元計價全球股、台幣實質匯率疊加、遺產） | `engine/annual.py::global_usd_series`、`simulate_annual(fx_overlay=, wealth_path)`、`run_v4_twvt.py` | `results/v4_twvt.csv`；`docs/bysq_report_twvt.html` | ✅ 匯率每年獨立抽樣，失去危機期同步貶值效果 |
 
 未做／部分：§8 Path A（資料不在 repo）；§4 DMS 交叉驗證（付費資料）；§6 換房等一次性非長照大額（量級被長照情境涵蓋）；§9.2 逐項稅制。
