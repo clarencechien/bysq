@@ -366,5 +366,6 @@ Path C 質借、其餘全同：歷史匯率 vs 凍結匯率＝強制事件 4.87%
 - **§7 Return stacking**：五五配的全部優勢＝趨勢溢酬；翻轉點（折扣 0.25 + 利差 0.5%）落在可投資範圍內 → 不穩健；RSSB 在每個通膨型壓力窗放大損失。
 - **§9**：費用 0.7%/年 ≈ 提領率 +0.5pp；棄守把跌破率推高 1.5–2 倍、100/0 傷最重；微笑曲線只在轉折晚（80 歲）時對固定提領有利；樣本延長到 2026-07 全體變好、無排序翻轉。
 - **§10**：台灣引擎向美國拉齊後質借的強制事件 4.9% → 14.6%（報酬偏誤是主角）；死亡率回套改寫「4% 不能外推到 50 年」為「不能外推到 40 歲退休」。
+- **規格外：FIRE 範例與台灣人持有 VT**（`docs/REPORT-v4.md` v4.11）：無勞保勞退、40/50/65 歲、1000/3000/5000 萬；四種世界（美國／全球≈VT／16 國）；含匯率的台灣 VT 持有人版本——3% 任何年齡、4% 要 65 歲、配置 100/0。
 
-*v4 重現：`python data/build_lifetable.py && python data/build_jst.py && python data/build_trend.py && python tests/test_v4.py && python run_v4_v3rerun.py && python run_v4_lr.py && python run_v4_floor.py && python run_v4_mortality.py && python run_v4_smooth.py && python run_v4_jst.py && python run_v4_accum.py && python run_v4_ltc.py && python run_v4_stack.py && python run_v4_realism.py && python run_v4_bias.py`*
+*v4 重現：`python data/build_lifetable.py && python data/build_jst.py && python data/build_trend.py && python tests/test_v4.py && python run_v4_v3rerun.py && python run_v4_lr.py && python run_v4_floor.py && python run_v4_mortality.py && python run_v4_smooth.py && python run_v4_jst.py && python run_v4_accum.py && python run_v4_ltc.py && python run_v4_stack.py && python run_v4_realism.py && python run_v4_bias.py && python run_v4_fire50.py && python run_v4_fire50_intl.py && python run_v4_twvt.py`*

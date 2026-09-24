@@ -103,6 +103,11 @@ CRRA 確定等值 γ∈{2,4,8} 全勝，且結構上不可能破產。
 
 **16. （v4）真實性折扣：費用 0.7%/年 ≈ 提領率 +0.5pp；行為棄守把跌破率推高 1.5–2 倍、100/0 傷最重；台灣引擎向美國拉齊後質借的強制事件 4.9% → 14.6%。**
 
+**17. （v4，台灣人持有 VT + BND、無勞保勞退、含匯率）用 3% 任何年齡都能退休，4% 要等到 65 歲；配置選 100/0。**
+16 國美元計價股票 + 美國公債 + 台幣實質匯率疊加（零均值）：固定 4% 提領錢用完時還活著的機率 40 歲 10.4%、50 歲 7.7%、65 歲 2.8%；3% 為 2.8% / 2.1% / 0.5%。
+100/0 每一格都優於或持平 80/20。VPW 從 4% 起步任何年齡都不破產、平均多花五到九成、最壞十分之一情況回到 3%，走時中位剩 1–1.7 倍。
+匯率波動讓破產率增加約三成；1000／3000／5000 萬給的是同一組百分比，差別只在長照。簡易版：`docs/bysq_report_twvt.html`。
+
 ## 已撤回／被推翻的結論（研究自己的錯誤紀錄）
 
 | 原結論 | 出處 | 現況 |
@@ -173,6 +178,8 @@ python run_v4_floor.py && python run_v4_figures.py                  # §1（約 
 python run_v4_mortality.py && python run_v4_smooth.py               # §2 §3
 python run_v4_jst.py && python run_v4_accum.py && python run_v4_ltc.py && python run_v4_stack.py   # §4–§7
 python run_v4_realism.py && python run_v4_bias.py                   # §9 §10
+python run_v4_fire50.py && python run_v4_fire50_intl.py             # FIRE 範例（月頻 US/TW；年頻四種世界）
+python run_v4_twvt.py                                               # 台灣人持有 VT（含匯率）簡易版
 ```
 
 ## 結構
@@ -183,13 +190,13 @@ engine/core.py       綁定同一時間軸的 stationary block bootstrap、月�
 engine/leverage.py   質借引擎：機會式補桶、維持率斷頭、額度抽回、真實利率序列
 engine/mortality.py  v4：內政部生命表、存活曲線、死亡抽樣、事後死亡率指標
 engine/household.py  v4：地板＋上檔家戶模擬（勞保／勞退／階梯／遞延年金／微笑／棄守）
-engine/annual.py     v4：JST 年頻引擎（池化 block bootstrap、GDP 加權世界序列）
+engine/annual.py     v4：JST 年頻引擎（池化 block bootstrap、GDP 加權世界序列、美元計價全球股 + 匯率疊加）
 engine/stack.py      v4：RSSB／RSST 合成序列
 data/fetch.py        資料下載與拼接（可重跑）；data/PROVENANCE.md 記來源與缺口
-data/build_*.py      v4：生命表（ODS → 單齡 qx）、JST 面板、趨勢序列
+data/build_*.py      v4：生命表（ODS → 單齡 qx）、JST 面板、趨勢序列；processed/twd_real_fx_annual.csv 由 run_v4_twvt 說明
 tests/               防自欺協定（每一項各一個測試）
 run_*.py             各輪實驗與情境
-results/             CSV／JSON／PNG 原始輸出
+results/             CSV／JSON／PNG 原始輸出（v4：results/v4_*.csv、v4_floor_frontier.png）
 docs/                規格（handoff v1–v3）、對照表、成本表、HTML 報告
 REPORT.md            完整技術報告（v1 + v2 + v3；第四部指向 docs/REPORT-v4.md）
 ```
